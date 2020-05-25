@@ -7,93 +7,6 @@
     android:background="@android:color/black"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="254dp"
-        android:layout_height="54dp"
-        android:background="#9CC640"
-        android:text="تخطى التسجيل"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/facebook"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/gmail"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/button4"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="79dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="106dp"
-        android:layout_marginBottom="51dp"
-        android:text="سجل الآن"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
-        app:layout_constraintStart_toStartOf="@+id/login-background" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="41dp"
-        android:layout_height="51dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="أو"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="198dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="تسجيل الدخول عن طريق"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="136dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="102dp"
-        android:layout_marginBottom="50dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="ليس لديك حساب ؟"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/editText2"
-        app:layout_constraintEnd_toEndOf="@+id/login-background" />
-
     <ImageView
         android:id="@+id/login-background"
         android:layout_width="wrap_content"
@@ -108,13 +21,84 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/login" />
 
+    <Button
+        android:id="@+id/skipLoginBtn"
+        android:layout_width="254dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button2_shape"
+        android:text="تخطى التسجيل"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/faceLoginBtn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/facebook"
+        app:layout_constraintBottom_toTopOf="@+id/skipLoginBtn"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/gmailLoginBtn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/gmail"
+        app:layout_constraintBottom_toTopOf="@+id/skipLoginBtn"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/regBtn"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="79dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="106dp"
+        android:layout_marginBottom="30dp"
+        android:text="سجل الآن"
+        android:textAlignment="viewEnd"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/login-background" />
+
+    <Button
+        android:id="@+id/forgetPassBtn"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="134dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="32dp"
+        android:text="نسيت كلمة المرور ؟"
+        android:textAlignment="viewStart"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/login-background"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="350dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button_shape"
+        android:text="تسجيل الدخول"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="160dp"
         android:layout_height="0.5dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        android:layout_marginBottom="27dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/screen_background_light" />
 
@@ -123,8 +107,8 @@
         android:layout_width="160dp"
         android:layout_height="0.5dp"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        android:layout_marginBottom="27dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/screen_background_light" />
 
@@ -132,10 +116,127 @@
         android:id="@+id/imageView4"
         android:layout_width="189dp"
         android:layout_height="187dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="تسجيل دخول عن طريق"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/faceLoginBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="أو"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="130dp"
+        android:layout_marginBottom="15dp"
+        android:text="ليس لديك حساب ؟"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/imageView5"
+        app:layout_constraintEnd_toEndOf="@+id/login-background" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="352dp"
+
+        android:layout_height="50dp"
+        android:layout_marginTop="55dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/emailEditTxt"
+                android:layout_width="294dp"
+                android:layout_height="50dp"
+                android:background="#FFFFFF"
+                android:ems="10"
+                android:hint="البريد الالكتروني"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/cardview_compat_inset_shadow"
+                android:password="false"
+                android:textAlignment="viewEnd"
+                android:textColorHint="#707070" />
+
+            <ImageView
+                android:id="@+id/emailImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/email" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="352dp"
+
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/passwordEditTxt"
+                android:layout_width="294dp"
+                android:layout_height="50dp"
+                android:background="#FFFFFF"
+                android:ems="10"
+                android:hint="كلمة المرور"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/cardview_compat_inset_shadow"
+                android:password="false"
+                android:textAlignment="viewEnd"
+                android:textColorHint="#707070" />
+
+            <ImageView
+                android:id="@+id/passImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/pass" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
