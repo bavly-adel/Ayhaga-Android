@@ -26,8 +26,9 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="108dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="45dp"
         android:background="@drawable/facebook"
+        android:fontFamily="@font/dinfontfamily"
         app:layout_constraintBottom_toBottomOf="@+id/login-background"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -36,12 +37,14 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="104dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="45dp"
         android:background="@drawable/gmail"
+        android:fontFamily="@font/dinfontfamily"
         app:layout_constraintBottom_toBottomOf="@+id/login-background"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
+        android:fontFamily="@font/dinfontfamily"
         android:id="@+id/loginBtn"
         android:layout_width="350dp"
         android:layout_height="51dp"
@@ -57,7 +60,7 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="160dp"
+        android:layout_width="130dp"
         android:layout_height="0.5dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="27dp"
@@ -67,7 +70,7 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="160dp"
+        android:layout_width="130dp"
         android:layout_height="0.5dp"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="27dp"
@@ -87,6 +90,7 @@
         app:srcCompat="@drawable/logo" />
 
     <TextView
+        android:fontFamily="@font/dinfontfamily"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -100,6 +104,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:fontFamily="@font/dinfontfamily"
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -130,6 +135,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:fontFamily="@font/dinfontfamily"
                 android:id="@+id/nameEditTxt"
                 android:layout_width="294dp"
                 android:layout_height="50dp"
@@ -173,6 +179,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:fontFamily="@font/dinfontfamily"
                 android:id="@+id/emailEditTxt"
                 android:layout_width="294dp"
                 android:layout_height="50dp"
@@ -213,6 +220,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:fontFamily="@font/dinfontfamily"
                 android:id="@+id/passwordEditTxt"
                 android:layout_width="294dp"
                 android:layout_height="50dp"
@@ -253,6 +261,8 @@
             android:orientation="horizontal">
 
             <EditText
+                android:fontFamily="@font/dinfontfamily"
+
                 android:id="@+id/confirmPassEditTxt"
                 android:layout_width="294dp"
                 android:layout_height="50dp"
