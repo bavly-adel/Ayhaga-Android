@@ -39,6 +39,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.name.setText(categories.get(position).getName());
         Picasso.get().load(categories.get(position).getImg_url()).into(holder.catImg);
+        //Picasso.get().load("https://dashboard.ayhaga.app/storage/meals/June2020/5pkdJV60A88KThH7MeaJ.jpg").into(holder.catImg);
+
 
 
     }

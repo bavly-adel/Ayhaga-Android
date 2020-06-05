@@ -47,13 +47,7 @@ public class HomeActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.categoryList);
         categories = new ArrayList<>();
-        extractSongs();
-
-//        categoryList = new ArrayList<>();
-//        recyclerView = findViewById(R.id.recyclerviewid);
-//        jsonrequest();
-
-
+        extractCategories();
 
         findViewById(R.id.menuBtn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,14 +83,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
     }
 
-
-    private void extractSongs() {
+    private void extractCategories() {
         System.out.println("start 2 # # # # # #  # ### # # #  # # #  # # # # ## # # ### # #  #####  #");
         RequestQueue queue = Volley.newRequestQueue(this);
         System.out.println(" } | }|} |}| | |} |} | }| }| | }|  *******");
@@ -114,13 +103,13 @@ public class HomeActivity extends AppCompatActivity {
                     try {
 
                         System.out.println("=- =-= -= -= -= -= -= -=-= -= -=-= -= -= - " + i);
-                        JSONObject songObject = response.getJSONObject(i);
+                        JSONObject catsObject = response.getJSONObject(i);
 
                         Category category = new Category();
-                        category.setName(songObject.getString("name").toString());
+                        category.setName(catsObject.getString("name").toString());
                         //song.setArtists(songObject.getString("artists".toString()));
-                        System.out.println(fullurl(songObject.getString("photo")));
-                        category.setImg_url(fullurl(songObject.getString("photo").toString()));
+                        System.out.println(fullurl(catsObject.getString("photo")));
+                        category.setImg_url(fullurl(catsObject.getString("photo").toString()));
                         //song.setSongURL(songObject.getString("url"));
                         categories.add(category);
                         System.out.println("=- =-= -= -= -= -= -= -=-= -= -=-= -= -= - " + i +"   "+category.getName());
@@ -156,7 +145,3 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 }
-
-
-
-
