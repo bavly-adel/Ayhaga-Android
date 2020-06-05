@@ -50,7 +50,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view2" />
 
-
+    <Button
+        android:id="@+id/button"
+        android:layout_width="373dp"
+        android:layout_height="177dp"
+        android:background="@drawable/check"
+        android:text="Button"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="253dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

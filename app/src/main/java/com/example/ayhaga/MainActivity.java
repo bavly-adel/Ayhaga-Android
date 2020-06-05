@@ -11,6 +11,8 @@ public class MainActivity extends AppCompatActivity {
     private Button forgetPassBtn;
     private Button registerBtn;
     private Button login;
+    private Button skipLogin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +22,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ForgetPasswordActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        skipLogin = (Button) findViewById(R.id.skipLoginBtn);
+        skipLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                 startActivity(intent);
 
             }
