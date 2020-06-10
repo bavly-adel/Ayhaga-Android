@@ -1,11 +1,11 @@
 package com.example.ayhaga;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Button forgetPassBtn;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         skipLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MealActivity.class);
+                Intent intent = new Intent(MainActivity.this, ReminderActivity.class);
                 startActivity(intent);
 
             }

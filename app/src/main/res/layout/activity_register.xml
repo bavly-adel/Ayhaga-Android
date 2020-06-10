@@ -180,7 +180,7 @@
 
             <EditText
                 android:fontFamily="@font/dinfontfamily"
-                android:id="@+id/emailEditTxt"
+                android:id="@+id/breakfastBtn"
                 android:layout_width="294dp"
                 android:layout_height="50dp"
                 android:background="#FFFFFF"

@@ -10,8 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MealActivity"
-        android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".ReminderActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+            android:name=".MealDetailsActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".MealActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".ChangePassActivity" />
         <activity
             android:name=".HomeActivity"
@@ -43,6 +49,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".NotificationBreakfast"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

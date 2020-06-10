@@ -107,6 +107,8 @@ public class HomeActivity extends AppCompatActivity {
 
                         Category category = new Category();
                         category.setName(catsObject.getString("name").toString());
+                        category.setId(Integer.parseInt(catsObject.getString("id").toString()));
+
                         //song.setArtists(songObject.getString("artists".toString()));
                         System.out.println(fullurl(catsObject.getString("photo")));
                         category.setImg_url(fullurl(catsObject.getString("photo").toString()));

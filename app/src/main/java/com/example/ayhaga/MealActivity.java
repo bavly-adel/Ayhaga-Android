@@ -1,14 +1,9 @@
 package com.example.ayhaga;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,14 +19,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MealActivity extends AppCompatActivity {
+    Meal meal = new Meal();
 
     private int category_id;
    // Meal meal;
-    private static String JSON_URL = "https://dashboard.ayhaga.app/api/meal/1";
+    private static String JSON_URL = "https://dashboard.ayhaga.app/api/meal/";
+    private String url="";
+
+    //get the current intent
+
 
 
     TextView likesTxt;
@@ -43,7 +42,17 @@ public class MealActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal);
 
-        findViewById(R.id.menuBtnClose).setOnClickListener(new View.OnClickListener() {
+        Intent intent = getIntent();
+        //get the attached extras from the intent
+//we should use the same key as we used to attach the data.
+        String id = intent.getStringExtra("cat_id");
+        url = JSON_URL+id;
+        System.out.println("new activity       = = ==  = == = = =       - - -- - - - - - "+JSON_URL);
+
+        System.out.println("- -- -  -- -- ---- - - -- -- --  "+id);
+
+
+        findViewById(R.id.elseBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // open right drawer
@@ -52,6 +61,22 @@ public class MealActivity extends AppCompatActivity {
 
             }
         });
+
+        findViewById(R.id.detailsBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // open right drawer
+
+                Intent i = new Intent(MealActivity.this, MealDetailsActivity.class);
+                //i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //int id = (int) name.getTag(Integer.parseInt("id"));
+                //int id = 2;
+                i.putExtra("meal", meal);
+                startActivity(i);
+
+            }
+        });
+
 
         nameTxt = (TextView) findViewById(R.id.mealName);
         likesTxt = (TextView) findViewById(R.id.likesTxt);
@@ -65,11 +90,10 @@ public class MealActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         System.out.println(" } | }|} |}| | |} |} | }| }| | }|  *******");
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, JSON_URL, null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
 
             @Override
             public void onResponse(JSONArray response) {
-                Meal meal = new Meal();
                 try {
 
                     System.out.println("=- =-= -= -= -= -= -= -=-= -= -=-= -= -= - " + response.getJSONObject(0).toString());

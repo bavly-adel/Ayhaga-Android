@@ -1,8 +1,11 @@
 package com.example.ayhaga;
 
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.List;
 
-public class Meal {
+public class Meal implements Serializable {
 
     private Integer id;
     private String name;

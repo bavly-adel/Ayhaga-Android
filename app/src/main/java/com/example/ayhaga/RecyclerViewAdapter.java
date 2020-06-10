@@ -1,5 +1,6 @@
 package com.example.ayhaga;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.name.setText(categories.get(position).getName());
         Picasso.get().load(categories.get(position).getImg_url()).into(holder.catImg);
+
+        holder.name.setTag(categories.get(position).getId());
         //Picasso.get().load("https://dashboard.ayhaga.app/storage/meals/June2020/5pkdJV60A88KThH7MeaJ.jpg").into(holder.catImg);
 
 
@@ -54,10 +57,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         TextView name;
         ImageView catImg;
+        private final Context context;
 
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(final View itemView) {
             super(itemView);
+            context = itemView.getContext();
+
 
             name = itemView.findViewById(R.id.catName);
             catImg = itemView.findViewById(R.id.catImg);
@@ -66,7 +72,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "Do Something With this Click", Toast.LENGTH_SHORT).show();
+
+                    Intent i = new Intent(context, MealActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    //int id = (int) name.getTag(Integer.parseInt("id"));
+                    //int id = 2;
+                    i.putExtra("cat_id",name.getTag().toString());
+                    context.startActivity(i);
+
+                    //Toast.makeText(v.getContext(), "Do Something With this Click", Toast.LENGTH_SHORT).show();
                 }
             });
         }
