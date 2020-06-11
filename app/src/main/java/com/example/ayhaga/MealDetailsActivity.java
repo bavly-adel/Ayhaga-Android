@@ -1,7 +1,6 @@
 package com.example.ayhaga;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.widget.TextView;
@@ -32,19 +31,19 @@ public class MealDetailsActivity extends AppCompatActivity {
         prepTxt = findViewById(R.id.meal_details_prep);
         ingredTxt = findViewById(R.id.meal_details_ingred);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            nameTxt.setText(Html.fromHtml(meal.getName(), Html.FROM_HTML_MODE_LEGACY));
-            descTxt.setText(Html.fromHtml(meal.getDesc(), Html.FROM_HTML_MODE_LEGACY));
-            ingredTxt.setText(Html.fromHtml(meal.getIngrediants(), Html.FROM_HTML_MODE_LEGACY));
-            prepTxt.setText(Html.fromHtml(meal.getPreparation(), Html.FROM_HTML_MODE_COMPACT));
-            //nameTxt.setText(Html.fromHtml("<h2>Title</h2><br><p>Description here</p>", Html.FROM_HTML_MODE_COMPACT));
-        }
-        else {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//            nameTxt.setText(Html.fromHtml(meal.getName(), Html.FROM_HTML_MODE_LEGACY));
+//            descTxt.setText(Html.fromHtml(meal.getDesc(), Html.FROM_HTML_MODE_LEGACY));
+//            ingredTxt.setText(Html.fromHtml(meal.getIngrediants(), Html.FROM_HTML_MODE_LEGACY));
+//            prepTxt.setText(Html.fromHtml(meal.getPreparation(), Html.FROM_HTML_MODE_COMPACT));
+//            //nameTxt.setText(Html.fromHtml("<h2>Title</h2><br><p>Description here</p>", Html.FROM_HTML_MODE_COMPACT));
+//        }
+//        else {
             if (meal.getName() != null) nameTxt.setText(meal.getName());
             if (meal.getDesc() != null) descTxt.setText(Html.fromHtml(meal.getDesc()));
             if (meal.getPreparation() != null) prepTxt.setText(Html.fromHtml(meal.getPreparation()));
             if (meal.getIngrediants() != null) ingredTxt.setText(Html.fromHtml(meal.getIngrediants()));
-        }
+        //}
 
 //        nameTxt.setText(meal.getName());
 //        descTxt.setText(meal.getDesc());
