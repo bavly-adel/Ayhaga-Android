@@ -56,5 +56,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        findViewById(R.id.faceLoginBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FavouriteActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

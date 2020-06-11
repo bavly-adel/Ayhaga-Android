@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -50,6 +51,10 @@ public class MealActivity extends AppCompatActivity {
         System.out.println("new activity       = = ==  = == = = =       - - -- - - - - - "+JSON_URL);
 
         System.out.println("- -- -  -- -- ---- - - -- -- --  "+id);
+
+        String x = " % %  ^ ^ ^ $ $ $ % % % ^ ^ ^  ^ ^  %B%% $ $ ## %#$$% $# %#$ %# " + url;
+
+        Toast.makeText(MealActivity.this,x,Toast.LENGTH_LONG).show();
 
 
         findViewById(R.id.elseBtn).setOnClickListener(new View.OnClickListener() {

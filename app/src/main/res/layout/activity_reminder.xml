@@ -29,15 +29,25 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:fontFamily="@font/dinnextltarabic"
+            android:text="تحديد ميعاد اشعار وجبة الفطار"
+            android:textColor="#000"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"/>
+
         <androidx.cardview.widget.CardView
 
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:layoutDirection="rtl"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="3dp"
             android:layout_marginRight="30dp"
             app:cardBackgroundColor="#FFFFFF"
             app:cardCornerRadius="12dp"
@@ -48,7 +58,7 @@
 
 
             <ImageView
-                android:id="@+id/emailImg"
+                android:id="@+id/alarmImg"
                 android:layout_width="44dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -82,6 +92,150 @@
             </androidx.appcompat.widget.AppCompatButton>
 
         </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:fontFamily="@font/dinnextltarabic"
+            android:text="تحديد ميعاد اشعار وجبة الغداء"
+            android:textColor="#000"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="30dp"/>
+
+        <androidx.cardview.widget.CardView
+
+            android:id="@+id/cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="5dp"
+            android:layoutDirection="rtl"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="30dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4">
+
+
+            <ImageView
+                android:id="@+id/alarmImg2"
+                android:layout_width="44dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                app:srcCompat="@drawable/reminder" />
+
+
+            <EditText
+                android:id="@+id/launchText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginRight="50dp"
+                android:background="#FFFFFF"
+                android:ems="10"
+                android:fontFamily="@font/dinfontfamily"
+                android:hint="00:00 AM"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/cardview_compat_inset_shadow"
+                android:password="false"
+                android:textAlignment="textEnd"
+                android:textColor="#707070"
+                android:textColorHint="#707070"
+                android:textDirection="ltr" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/launchBtn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:fontFamily="@font/dinnextltarabic"
+            android:text="تحديد ميعاد اشعار وجبة العشاء"
+            android:textColor="#000"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="30dp"/>
+
+        <androidx.cardview.widget.CardView
+
+            android:id="@+id/cardView3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="5dp"
+            android:layoutDirection="rtl"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="30dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4">
+
+
+            <ImageView
+                android:id="@+id/alarmImg3"
+                android:layout_width="44dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                app:srcCompat="@drawable/reminder" />
+
+
+            <EditText
+                android:id="@+id/dinnerText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginRight="50dp"
+                android:background="#FFFFFF"
+                android:ems="10"
+                android:fontFamily="@font/dinfontfamily"
+                android:hint="00:00 AM"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/cardview_compat_inset_shadow"
+                android:password="false"
+                android:textAlignment="textEnd"
+                android:textColor="#707070"
+                android:textColorHint="#707070"
+                android:textDirection="ltr" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dinnerBtn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="match_parent"
+
+            android:layout_height="46dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/button_shape"
+            android:fontFamily="@font/dinfontfamily"
+            android:text="حفظ"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
