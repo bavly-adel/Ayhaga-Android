@@ -34,34 +34,24 @@ public class FavouriteActivity extends AppCompatActivity {
     //private static String JSON_URL = "https://dashboard.ayhaga.app/api/categories";
     private static String newJSON_URL = "https://dashboard.ayhaga.app/api/mealid/";
     FavouriteRecyclerAdapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourite);
-
         meals = new ArrayList<Meal>();
-
         mealsIds.add("372");
         mealsIds.add("423");
         mealsIds.add("500");
         mealsIds.add("501");
         mealsIds.add("502");
         mealsIds.add("505");
-
         //meal = new Meal();
-
-
-        System.out.println("meals size   "+meals.size());
-
-
         recyclerView = findViewById(R.id.favouriteList);
         //categories = new ArrayList<>();
         for (int i=0;i<mealsIds.size();i++) {
             extractCategories(i);
-            //System.out.println(meals.get(i).getName().toString()+"\n");
-
         }
+        Log.d("meals-size", meals.size()+"");
 
         //for (int i=0;i<6;i++) {
 //            System.out.println(meals.get(0).getName()+"\n");
@@ -82,25 +72,11 @@ public class FavouriteActivity extends AppCompatActivity {
     }
 
     private void extractCategories(int index) {
-        System.out.println("start 2 # # # # # #  # ### # # #  # # #  # # # # ## # # ### # #  #####  #");
         RequestQueue queue = Volley.newRequestQueue(this);
-        System.out.println(" } | }|} |}| | |} |} | }| }| | }|  *******");
-
-        //for (int y=0;y<mealsIds.size()-1;y++) {
-
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, newJSON_URL+mealsIds.get(index), null, new Response.Listener<JSONArray>() {
-
             @Override
             public void onResponse(JSONArray response) {
-//                try {
-//                    System.out.println(" } | }|} |}| | |} |} | }| }| | }| " + response.getJSONObject(0).getJSONObject().getJSONObject(0));
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-
                 try {
-
-
                     System.out.println("=- =-= -= -= -= -= -= -=-= -= -=-= -= -= - " + response.getJSONObject(0).toString());
                     JSONObject mealObject = response.getJSONObject(0);
                     System.out.println("nameeee ^^^^^ ^ ^ ^    ^ ^ ^ ^ ^ ^ ^  ^" + mealObject.getString("name").toString());
@@ -112,12 +88,12 @@ public class FavouriteActivity extends AppCompatActivity {
 
                     System.out.println(fullurl(mealObject.getString("main_photo")));
                     //Picasso.get().load(fullurl(mealObject.getString("main_photo"))).into(mealImg);
-
                     meal.setImgurl(fullurl(mealObject.getString("main_photo").toString()));
                     meal.setLikes(Integer.parseInt(mealObject.getString("likes")));
+                    meals.add(meal);
 
-                    //meals.add(meal);
-
+                    Log.d("id", index+"");
+                    Log.d("meal", meal.getName());
                 } catch (JSONException e) {
                     System.out.println("Errooooooooooor ");
                     e.printStackTrace();
@@ -133,14 +109,7 @@ public class FavouriteActivity extends AppCompatActivity {
                 Log.d("tag", "onErrorResponse: " + error.getMessage());
             }
         });
-
-        meals.add(meal);
-
         queue.add(jsonArrayRequest);
-        //}
-        meals.add(meal);
-
-
     }
 
     private String fullurl(String url){
