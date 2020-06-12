@@ -26,12 +26,11 @@ public class MealActivity extends AppCompatActivity {
     Meal meal = new Meal();
 
     private int category_id;
-   // Meal meal;
+    // Meal meal;
     private static String JSON_URL = "https://dashboard.ayhaga.app/api/meal/";
-    private String url="";
+    private String url = "";
 
     //get the current intent
-
 
 
     TextView likesTxt;
@@ -47,14 +46,10 @@ public class MealActivity extends AppCompatActivity {
         //get the attached extras from the intent
 //we should use the same key as we used to attach the data.
         String id = intent.getStringExtra("cat_id");
-        url = JSON_URL+id;
-        System.out.println("new activity       = = ==  = == = = =       - - -- - - - - - "+JSON_URL);
+        url = JSON_URL + id;
+        // String x = " % %  ^ ^ ^ $ $ $ % % % ^ ^ ^  ^ ^  %B%% $ $ ## %#$$% $# %#$ %# " + url;
 
-        System.out.println("- -- -  -- -- ---- - - -- -- --  "+id);
-
-        String x = " % %  ^ ^ ^ $ $ $ % % % ^ ^ ^  ^ ^  %B%% $ $ ## %#$$% $# %#$ %# " + url;
-
-        Toast.makeText(MealActivity.this,x,Toast.LENGTH_LONG).show();
+        Toast.makeText(MealActivity.this, id + "", Toast.LENGTH_LONG).show();
 
 
         findViewById(R.id.elseBtn).setOnClickListener(new View.OnClickListener() {
@@ -91,19 +86,14 @@ public class MealActivity extends AppCompatActivity {
     }
 
     private void extractRandomMeal() {
-        System.out.println("start 2 # # # # # #  # ### # # #  # # #  # # # # ## # # ### # #  #####  #");
         RequestQueue queue = Volley.newRequestQueue(this);
-        System.out.println(" } | }|} |}| | |} |} | }| }| | }|  *******");
-
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
 
             @Override
             public void onResponse(JSONArray response) {
                 try {
 
-                    System.out.println("=- =-= -= -= -= -= -= -=-= -= -=-= -= -= - " + response.getJSONObject(0).toString());
                     JSONObject mealObject = response.getJSONObject(0);
-                    System.out.println("nameeee ^^^^^ ^ ^ ^    ^ ^ ^ ^ ^ ^ ^  ^" + mealObject.getString("name").toString());
                     meal.setName(mealObject.getString("name").toString());
 
                     //meal.setDesc(mealObject.getString("description").toString());
@@ -123,11 +113,9 @@ public class MealActivity extends AppCompatActivity {
                 }
 
                 nameTxt.setText(meal.getName());
-                likesTxt.setText(" "+meal.getLikes());
+                likesTxt.setText(" " + meal.getLikes());
 
                 //Picasso.get().load(fullurl(meal.getImgurl())).into(mealImg);
-
-
 
 
             }
@@ -142,9 +130,9 @@ public class MealActivity extends AppCompatActivity {
 
     }
 
-    private String fullurl(String url){
+    private String fullurl(String url) {
 
-        String newurl = "https://dashboard.ayhaga.app/storage/"+url;
+        String newurl = "https://dashboard.ayhaga.app/storage/" + url;
 
         return newurl;
 

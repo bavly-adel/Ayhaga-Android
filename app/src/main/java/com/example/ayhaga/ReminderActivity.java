@@ -59,6 +59,17 @@ public class ReminderActivity extends AppCompatActivity {
         Button breakfastBtn = (Button) findViewById(R.id.breakfastBtn);
         Button launchBtn = (Button) findViewById(R.id.launchBtn);
         Button dinnerBtn = (Button) findViewById(R.id.dinnerBtn);
+        Button save = (Button) findViewById(R.id.saveBtn);
+
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                setNotificationDinner(17,36,"2","غداك النهاردة","شوف غداك ايه !؟","notifyLaunch");
+                setNotificationDinner(17,36,"3","عشاك النهاردة","شوف هتتعشي ايه !؟","notifyDinner");
+
+            }
+        });
 
         breakfastBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +95,7 @@ public class ReminderActivity extends AppCompatActivity {
 
                         }
 
-                        setNotificationBreakfast(hourOfDay,minute);
+                        setNotificationDinner(hourOfDay,minute,"1","فطارك النهاردة","شوف فطارك ايه !؟","notifyBreakfast");
 
                     }
                 },hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
@@ -118,7 +129,7 @@ public class ReminderActivity extends AppCompatActivity {
 
                         }
 
-                        setNotificationLaunch(hourOfDay,minute);
+                        setNotificationDinner(hourOfDay,minute,"2","غداك النهاردة","شوف غداك ايه !؟","notifyLaunch");
 
                     }
                 },hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
@@ -152,7 +163,7 @@ public class ReminderActivity extends AppCompatActivity {
 
                         }
 
-                        setNotificationDinner(hourOfDay,minute);
+                        setNotificationDinner(hourOfDay,minute,"3","عشاك النهاردة","شوف هتتعشي ايه !؟","notifyDinner");
 
                     }
                 },hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
@@ -165,6 +176,11 @@ public class ReminderActivity extends AppCompatActivity {
     }
 
 
+
+
+
+
+
     private void setNotificationBreakfast(int hour,int minute){
         //Toast.makeText(ReminderActivity.this,"reminder",Toast.LENGTH_SHORT).show();
 
@@ -174,6 +190,9 @@ public class ReminderActivity extends AppCompatActivity {
 
         PendingIntent pendingIntent =
                 PendingIntent.getBroadcast(ReminderActivity.this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+
         AlarmManager alarmManager = (AlarmManager) getSystemService((ALARM_SERVICE));
 
         Calendar cur_cal = new GregorianCalendar();
@@ -217,12 +236,13 @@ public class ReminderActivity extends AppCompatActivity {
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 30*1000, pendingIntent);
     }
 
-    private void setNotificationDinner(int hour,int minute){
-        //Toast.makeText(ReminderActivity.this,"reminder",Toast.LENGTH_SHORT).show();
-
+    private void setNotificationDinner(int hour,int minute,String catNumber,String title,String desc,String channelId){
         Intent intent = new Intent(ReminderActivity.this, NotificationDinner.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        //PendingIntent pendingIntent = PendingIntent.getBroadcast(ReminderActivity.this,0,intent,PendingIntent.FLAG_ONE_SHOT);
+        intent.putExtra("num",catNumber);
+        intent.putExtra("title",title);
+        intent.putExtra("desc",desc);
+        intent.putExtra("channel_id",channelId);
 
         PendingIntent pendingIntent =
                 PendingIntent.getBroadcast(ReminderActivity.this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -239,7 +259,10 @@ public class ReminderActivity extends AppCompatActivity {
         cal.set(Calendar.MILLISECOND, cur_cal.get(Calendar.MILLISECOND));
         cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
         cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 30*1000, pendingIntent);
+
+        //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 30*1000, pendingIntent);
+        alarmManager.set( AlarmManager.ELAPSED_REALTIME_WAKEUP, 500, pendingIntent);
+
     }
 
 

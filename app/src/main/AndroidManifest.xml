@@ -54,8 +54,8 @@
         </activity>
 
         <receiver android:name=".NotificationDinner" />
-        <receiver android:name=".NotificationBreakfast" />
-        <receiver android:name=".NotificationLaunch" />
+       <!-- <receiver android:name=".NotificationBreakfast" />
+        <receiver android:name=".NotificationLaunch" />-->
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
