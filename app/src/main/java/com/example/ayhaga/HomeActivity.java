@@ -20,8 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -47,43 +45,53 @@ public class HomeActivity extends AppCompatActivity {
         categories = new ArrayList<>();
         extractCategories();
 
-        findViewById(R.id.menuBtn).setOnClickListener(new View.OnClickListener() {
+//        findViewById(R.id.menuBtn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // open right drawer
+//                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.activity_home);
+//                drawer.openDrawer(GravityCompat.END);
+//            }
+//        });
+
+
+
+//        findViewById(R.id.menuBtnClose).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // open right drawer
+//                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.activity_home);
+//                drawer.closeDrawer(GravityCompat.END);
+//            }
+//        });
+
+//        findViewById(R.id.homeBtn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//
+//
+//        findViewById(R.id.logoutBtn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+
+
+                findViewById(R.id.reminderBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // open right drawer
-                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.activity_home);
-                drawer.openDrawer(GravityCompat.END);
-            }
-        });
-
-
-
-        findViewById(R.id.menuBtnClose).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // open right drawer
-                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.activity_home);
-                drawer.closeDrawer(GravityCompat.END);
-            }
-        });
-
-        findViewById(R.id.homeBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+                Intent intent = new Intent(HomeActivity.this, ReminderActivity.class);
                 startActivity(intent);
             }
         });
 
-
-
-        findViewById(R.id.logoutBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
     }
 
