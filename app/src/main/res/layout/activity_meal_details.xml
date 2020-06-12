@@ -31,6 +31,7 @@
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/detailsParentLinear"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -56,6 +57,7 @@
                 </androidx.recyclerview.widget.RecyclerView>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/descLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -86,6 +88,7 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/ingrediantsLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -93,6 +96,7 @@
 
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/ingrediantsTitleTxt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/dinnextltarabic"
@@ -116,6 +120,7 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/prepLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -145,88 +150,88 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
+<!--                <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:orientation="vertical">-->
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/dinnextltarabic"
-                        android:text=":: فيديو"
-                        android:textColor="#D52D16"
-                        android:textSize="18sp"
-                        android:layout_margin="5dp"/>
+<!--                    <androidx.appcompat.widget.AppCompatTextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:fontFamily="@font/dinnextltarabic"-->
+<!--                        android:text=":: فيديو"-->
+<!--                        android:textColor="#D52D16"-->
+<!--                        android:textSize="18sp"-->
+<!--                        android:layout_margin="5dp"/>-->
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_margin="5dp">
+<!--                    <androidx.cardview.widget.CardView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="200dp"-->
+<!--                        android:layout_margin="5dp">-->
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="5dp"/>
-
-
-                    </androidx.cardview.widget.CardView>
+<!--                        <androidx.appcompat.widget.AppCompatImageView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_marginTop="5dp"/>-->
 
 
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
+<!--                    </androidx.cardview.widget.CardView>-->
 
 
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:orientation="horizontal"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/meal_details_gradient">
+<!--                </androidx.appcompat.widget.LinearLayoutCompat>-->
 
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_weight="1"
-                        android:layout_height="65dp"
-                        android:layout_width="0dp">
 
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:layout_width="135dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="12dp"
-                            android:background="#fff"
-                            android:drawableRight="@drawable/kda2"
-                            android:fontFamily="@font/dinnextltarabic"
-                            android:paddingRight="30dp"
-                            android:paddingLeft="30dp"
-                            android:text="لايك"
-                            android:textColor="#707070" />
 
-                    </androidx.appcompat.widget.LinearLayoutCompat>
+<!--                <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:background="@drawable/meal_details_gradient">-->
 
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_weight="1"
-                        android:layout_height="65dp"
-                        android:layout_width="0dp"
-                        android:layoutDirection="rtl">
+<!--                    <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_height="65dp"-->
+<!--                        android:layout_width="0dp">-->
 
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:layout_width="135dp"
-                            android:layout_height="40dp"
-                            android:layout_marginRight="25dp"
-                            android:layout_marginTop="12dp"
-                            android:background="#fff"
-                            android:drawableRight="@drawable/kda2"
-                            android:fontFamily="@font/dinnextltarabic"
-                            android:paddingRight="30dp"
-                            android:paddingLeft="25dp"
-                            android:text="المفضلة"
-                            android:textColor="#707070" />
+<!--                        <androidx.appcompat.widget.AppCompatButton-->
+<!--                            android:layout_width="135dp"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            android:layout_marginLeft="25dp"-->
+<!--                            android:layout_marginTop="12dp"-->
+<!--                            android:background="#fff"-->
+<!--                            android:drawableRight="@drawable/kda2"-->
+<!--                            android:fontFamily="@font/dinnextltarabic"-->
+<!--                            android:paddingRight="30dp"-->
+<!--                            android:paddingLeft="30dp"-->
+<!--                            android:text="لايك"-->
+<!--                            android:textColor="#707070" />-->
 
-                    </androidx.appcompat.widget.LinearLayoutCompat>
+<!--                    </androidx.appcompat.widget.LinearLayoutCompat>-->
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+<!--                    <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_height="65dp"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layoutDirection="rtl">-->
+
+<!--                        <androidx.appcompat.widget.AppCompatButton-->
+<!--                            android:layout_width="135dp"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            android:layout_marginRight="25dp"-->
+<!--                            android:layout_marginTop="12dp"-->
+<!--                            android:background="#fff"-->
+<!--                            android:drawableRight="@drawable/kda2"-->
+<!--                            android:fontFamily="@font/dinnextltarabic"-->
+<!--                            android:paddingRight="30dp"-->
+<!--                            android:paddingLeft="25dp"-->
+<!--                            android:text="المفضلة"-->
+<!--                            android:textColor="#707070" />-->
+
+<!--                    </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+<!--                </androidx.appcompat.widget.LinearLayoutCompat>-->
 
 
 

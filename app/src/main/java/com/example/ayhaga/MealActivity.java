@@ -95,6 +95,7 @@ public class MealActivity extends AppCompatActivity {
 
                     JSONObject mealObject = response.getJSONObject(0);
                     meal.setName(mealObject.getString("name").toString());
+                    meal.setCategory_id(mealObject.getString("category_id").toString());
 
                     //meal.setDesc(mealObject.getString("description").toString());
                     meal.setIngrediants(mealObject.getString("ingredients").toString());
