@@ -1,7 +1,5 @@
 package com.example.ayhaga;
 
-import android.os.Parcelable;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -15,12 +13,13 @@ public class Meal implements Serializable {
     private String imgurl;
     private List<String> photos;
     private Integer likes;
+    private String category_id;
 
     public Meal(){
 
     }
 
-    public Meal(Integer id, String name, String desc, String ingrediants, String preparation, String imgurl, List<String> photos, Integer likes) {
+    public Meal(Integer id, String name, String desc, String ingrediants, String preparation, String imgurl, List<String> photos, Integer likes, String category_id) {
         this.id = id;
         this.name = name;
         this.desc = desc;
@@ -29,6 +28,15 @@ public class Meal implements Serializable {
         this.imgurl = imgurl;
         this.photos = photos;
         this.likes = likes;
+        this.category_id = category_id;
+    }
+
+    public String getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(String category_id) {
+        this.category_id = category_id;
     }
 
     public Integer getId() {
