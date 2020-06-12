@@ -83,20 +83,6 @@ public class MealActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.detailsBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // open right drawer
-
-                Intent i = new Intent(MealActivity.this, MealDetailsActivity.class);
-                //i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                //int id = (int) name.getTag(Integer.parseInt("id"));
-                //int id = 2;
-                i.putExtra("meal", meal);
-                startActivity(i);
-
-            }
-        });
 
 
         nameTxt = (TextView) findViewById(R.id.mealName);
