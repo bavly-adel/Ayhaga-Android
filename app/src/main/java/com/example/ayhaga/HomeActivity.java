@@ -42,8 +42,13 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         recyclerView = findViewById(R.id.categoryList);
+
         categories = new ArrayList<>();
-        extractCategories();
+        addBasicCategories();
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        adapter = new RecyclerViewAdapter(getApplicationContext(),categories);
+        recyclerView.setAdapter(adapter);
+        //extractCategories();
 
 //        findViewById(R.id.menuBtn).setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -133,9 +138,7 @@ public class HomeActivity extends AppCompatActivity {
                     }
                 }
 
-                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                adapter = new RecyclerViewAdapter(getApplicationContext(),categories);
-                recyclerView.setAdapter(adapter);
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -154,6 +157,21 @@ public class HomeActivity extends AppCompatActivity {
 
         return newurl;
 
+    }
+
+    public void addBasicCategories()
+    {
+        Category breakfast=new Category("فطارنا",fullurl("categories/May2020/oO8cKcAdcPjrdTcCjSps.png"),1);
+        Category launch=new Category("غدانا إيه",fullurl("categories/May2020/uBDmjOAWOBh81QUUw2wH.png"),2);
+        Category dinner=new Category("العشا اللذيد",fullurl("categories/May2020/1Tk8hji2nG4srY61BoL5.png"),3);
+        Category dessert=new Category("حلويات خفيفة",fullurl("categories/May2020/164XX8wg3kjZOkxkXjbP.png"),4);
+        Category fruits=new Category("عالم الفواكة",fullurl("categories/May2020/OnLifBH5PI3xWgWHZj7Z.png"),5);
+
+        categories.add(breakfast);
+        categories.add(launch);
+        categories.add(dinner);
+        categories.add(dessert);
+        categories.add(fruits);
     }
 
 }
