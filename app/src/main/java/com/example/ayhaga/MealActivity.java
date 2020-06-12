@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -36,6 +38,7 @@ public class MealActivity extends AppCompatActivity {
     TextView likesTxt;
     TextView nameTxt;
     ImageView mealImg;
+    ProgressBar imgProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +55,30 @@ public class MealActivity extends AppCompatActivity {
         Toast.makeText(MealActivity.this, id + "", Toast.LENGTH_LONG).show();
 
 
+
+
+
         findViewById(R.id.elseBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // open right drawer
 
                 extractRandomMeal();
+
+            }
+        });
+
+        findViewById(R.id.mealLinear).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // open right drawer
+
+                Intent i = new Intent(MealActivity.this, MealDetailsActivity.class);
+                //i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //int id = (int) name.getTag(Integer.parseInt("id"));
+                //int id = 2;
+                i.putExtra("meal", meal);
+                startActivity(i);
 
             }
         });
@@ -79,7 +100,7 @@ public class MealActivity extends AppCompatActivity {
 
 
         nameTxt = (TextView) findViewById(R.id.mealName);
-        likesTxt = (TextView) findViewById(R.id.likesTxt);
+        //likesTxt = (TextView) findViewById(R.id.likesTxt);
         mealImg = (ImageView) findViewById(R.id.mealImg);
 
         extractRandomMeal();
@@ -102,10 +123,26 @@ public class MealActivity extends AppCompatActivity {
                     meal.setPreparation(mealObject.getString("preparation").toString());
 
                     System.out.println(fullurl(mealObject.getString("main_photo")));
-                    Picasso.get().load(fullurl(mealObject.getString("main_photo"))).into(mealImg);
 
                     meal.setImgurl(fullurl(mealObject.getString("main_photo").toString()));
                     meal.setLikes(Integer.parseInt(mealObject.getString("likes")));
+
+                    imgProgress = findViewById(R.id.imgProgress);
+                    imgProgress.setVisibility(View.VISIBLE);
+
+                    Picasso.get().load(fullurl(mealObject.getString("main_photo"))).into(mealImg, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            imgProgress.setVisibility(View.INVISIBLE);
+                        }
+
+                        @Override
+                        public void onError(Exception e) {
+
+                        }
+                    });
+
+
 
 
                 } catch (JSONException e) {
@@ -114,7 +151,7 @@ public class MealActivity extends AppCompatActivity {
                 }
 
                 nameTxt.setText(meal.getName());
-                likesTxt.setText(" " + meal.getLikes());
+                //likesTxt.setText(" " + meal.getLikes());
 
                 //Picasso.get().load(fullurl(meal.getImgurl())).into(mealImg);
 

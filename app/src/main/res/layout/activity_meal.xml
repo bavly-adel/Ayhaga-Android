@@ -65,6 +65,7 @@
 
 
     <LinearLayout
+        android:id="@+id/mealLinear"
         android:layout_width="340dp"
         android:layout_height="300dp"
         android:layout_marginStart="20dp"
@@ -85,26 +86,34 @@
                 android:id="@+id/mealImg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_launcher_background" />
+                android:scaleType="centerCrop"/>
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <ProgressBar
 
-                android:id="@+id/likesTxt"
+                android:id="@+id/imgProgress"
+                style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/linear_shape"
-                android:drawableLeft="@drawable/kda2"
-                android:padding="5dp"
-                android:text="1000"
-                android:textAlignment="center"
-                android:textColor="#222455"
-                android:textSize="17sp"
-                android:textStyle="bold">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="95dp"
+                android:layout_marginRight="140dp" />
 
-            </androidx.appcompat.widget.AppCompatTextView>
+            <!--            <androidx.appcompat.widget.AppCompatTextView-->
+
+<!--                android:id="@+id/likesTxt"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:layout_marginRight="15dp"-->
+<!--                android:background="@drawable/linear_shape"-->
+<!--                android:drawableLeft="@drawable/kda2"-->
+<!--                android:padding="5dp"-->
+<!--                android:text="1000"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="#222455"-->
+<!--                android:textSize="17sp"-->
+<!--                android:textStyle="bold">-->
+
+<!--            </androidx.appcompat.widget.AppCompatTextView>-->
         </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.AppCompatTextView
