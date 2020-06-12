@@ -49,9 +49,9 @@ public class MealDetailsActivity extends AppCompatActivity {
 
 
         System.out.println(": : : : :  : : : : : : "+meal.getCategory_id()+": : : : : : :: : :: :   فوائد الفاكهة ");
-        ingrediantsTitleTxt.setText("فوائد الفاكهة");
+      //  ingrediantsTitleTxt.setText("فوائد الفاكهة");
 
-        if (meal.getCategory_id() == "5"){
+        if (meal.getCategory_id().equals("5")){
 
             System.out.println(": : : : :  : : : : : : "+meal.getCategory_id()+": : : : : : :: : :: :   فوائد الفاكهة ");
             ingrediantsTitleTxt.setText("فوائد الفاكهة");

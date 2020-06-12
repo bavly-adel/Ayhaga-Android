@@ -60,14 +60,20 @@ public class ReminderActivity extends AppCompatActivity {
         Button launchBtn = (Button) findViewById(R.id.launchBtn);
         Button dinnerBtn = (Button) findViewById(R.id.dinnerBtn);
         Button save = (Button) findViewById(R.id.saveBtn);
+        Button test = (Button) findViewById(R.id.save2Btn);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 setNotificationDinner(17,36,"2","غداك النهاردة","شوف غداك ايه !؟","notifyLaunch");
-                setNotificationDinner(17,36,"3","عشاك النهاردة","شوف هتتعشي ايه !؟","notifyDinner");
 
+            }
+        });
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNotificationDinner(17,36,"3","عشاك النهاردة","شوف هتتعشي ايه !؟","notifyDinner");
             }
         });
 
