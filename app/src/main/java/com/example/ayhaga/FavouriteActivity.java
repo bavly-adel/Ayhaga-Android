@@ -100,8 +100,6 @@ public class FavouriteActivity extends AppCompatActivity {
                 }
 
                 //meals.add(meal);
-
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -115,7 +113,6 @@ public class FavouriteActivity extends AppCompatActivity {
     private String fullurl(String url){
 
         String newurl = "https://dashboard.ayhaga.app/storage/"+url;
-
         return newurl;
 
     }

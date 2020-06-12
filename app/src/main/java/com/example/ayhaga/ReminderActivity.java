@@ -81,7 +81,6 @@ public class ReminderActivity extends AppCompatActivity {
                             breakfastText.setText(hourOfDay + " : " + minute + " AM");
                         }else {
                             breakfastText.setText((hourOfDay) + " : " + minute + " PM");
-
                         }
 
                         setNotificationBreakfast(hourOfDay,minute);

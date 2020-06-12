@@ -191,7 +191,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/breakfastBtn"
+                android:id="@+id/emailEtext"
                 android:layout_width="294dp"
                 android:layout_height="50dp"
                 android:background="#FFFFFF"
@@ -199,6 +199,7 @@
                 android:fontFamily="@font/dinfontfamily"
                 android:hint="البريد الالكتروني"
                 android:inputType="textEmailAddress"
+                android:textColor="#707070"
                 android:padding="@dimen/cardview_compat_inset_shadow"
                 android:password="false"
                 android:textAlignment="viewEnd"
@@ -238,6 +239,7 @@
                 android:background="#FFFFFF"
                 android:ems="10"
                 android:fontFamily="@font/dinfontfamily"
+                android:textColor="#707070"
                 android:hint="كلمة المرور"
                 android:inputType="textEmailAddress"
                 android:padding="@dimen/cardview_compat_inset_shadow"
