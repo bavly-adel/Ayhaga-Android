@@ -112,10 +112,13 @@ public class MealDetailsActivity extends AppCompatActivity {
 
         photos.add(meal.getImgurl());
 
-
-        for (int i = 0; i < meal.getPhotos().size(); i++) {
-            photos.add(fullurl(meal.getPhotos().get(i)));
+        if (!(meal.getPhotos().size() ==1 && meal.getPhotos().get(0).equals("null")))
+        {
+            for (int i = 0; i < meal.getPhotos().size(); i++) {
+                photos.add(fullurl(meal.getPhotos().get(i)));
+            }
         }
+
 
 
         for (int i = 0; i < meal.getPhotos().size(); i++) {
