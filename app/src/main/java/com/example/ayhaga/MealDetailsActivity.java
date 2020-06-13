@@ -5,8 +5,13 @@ import android.os.Bundle;
 import android.text.Html;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MealDetailsActivity extends AppCompatActivity {
 
@@ -23,10 +28,19 @@ public class MealDetailsActivity extends AppCompatActivity {
     LinearLayoutCompat ingredLinear;
     LinearLayoutCompat detailsParentLinear;
 
+
+    RecyclerView photosList;
+    List<String> photos;
+    MealPhotosRecyclerAdapter adapter;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_details);
+
 
         Intent intent = getIntent();
         Meal meal = (Meal) intent.getExtras().getSerializable("meal");
@@ -35,10 +49,9 @@ public class MealDetailsActivity extends AppCompatActivity {
         prepLinear = findViewById(R.id.prepLayout);
         ingredLinear = findViewById(R.id.ingrediantsLayout);
         detailsParentLinear = findViewById(R.id.detailsParentLinear);
-        //if(meal.get)
+        photosList = findViewById(R.id.photosList);
 
 //
-        System.out.println("- -- -  -- -- ---- - - -- -- --  "+meal.getName());
 
         nameTxt = findViewById(R.id.meal_details_name);
         descTxt = findViewById(R.id.meal_details_desc);
@@ -69,36 +82,60 @@ public class MealDetailsActivity extends AppCompatActivity {
 //            //nameTxt.setText(Html.fromHtml("<h2>Title</h2><br><p>Description here</p>", Html.FROM_HTML_MODE_COMPACT));
 //        }
 //        else {
-            if (meal.getName() != null) {
-                nameTxt.setText(meal.getName());
-            }
-            if (meal.getDesc() != null) {
-                descTxt.setText(Html.fromHtml(meal.getDesc()));
-            }else {
-                detailsParentLinear.removeView(descLinear);
 
-            }
-            if (meal.getPreparation() != null) {
-                prepTxt.setText(Html.fromHtml(meal.getPreparation()));
-            }else {
-                detailsParentLinear.removeView(prepLinear);
+        if (meal.getName() != null) {
+            nameTxt.setText(meal.getName());
+        }
+        if (meal.getDesc() != null) {
+            descTxt.setText(Html.fromHtml(meal.getDesc()));
+        }else {
+            detailsParentLinear.removeView(descLinear);
 
-            }
-            if (meal.getIngrediants() != null) {
-                ingredTxt.setText(Html.fromHtml(meal.getIngrediants()));
-            }else {
-                detailsParentLinear.removeView(ingredLinear);
+        }
+        if (meal.getPreparation() != null) {
+            prepTxt.setText(Html.fromHtml(meal.getPreparation()));
+        }else {
+            detailsParentLinear.removeView(prepLinear);
 
-
-            }
-        //}
-
-//        nameTxt.setText(meal.getName());
-//        descTxt.setText(meal.getDesc());
-//        ingredTxt.setText(meal.getIngrediants());
-//        prepTxt.setText(meal.getPreparation());
+        }
+        if (meal.getIngrediants() != null) {
+            ingredTxt.setText(Html.fromHtml(meal.getIngrediants()));
+        }else {
+            detailsParentLinear.removeView(ingredLinear);
 
 
+        }
+
+
+        // add main photo and meal_photos to tje list
+        photos = new ArrayList<String>();
+
+        photos.add(meal.getImgurl());
+
+
+        for (int i = 0; i < meal.getPhotos().size(); i++) {
+            photos.add(fullurl(meal.getPhotos().get(i)));
+        }
+
+
+        for (int i = 0; i < meal.getPhotos().size(); i++) {
+            System.out.println(meal.getPhotos().get(i)+"\n");
+        }
+        System.out.println(photos.size()+"\n"+ meal.getPhotos().size() + "  " + meal.getPhotos().get(0));
+
+
+
+        photosList.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
+        adapter = new MealPhotosRecyclerAdapter(getApplicationContext(),photos);
+        photosList.setAdapter(adapter);
+
+    }
+
+    private String fullurl(String url){
+
+        String newurl = "https://dashboard.ayhaga.app/storage/"+url;
+
+        return newurl;
 
     }
 }

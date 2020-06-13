@@ -22,6 +22,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Arrays;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MealActivity extends AppCompatActivity {
@@ -46,8 +48,6 @@ public class MealActivity extends AppCompatActivity {
         setContentView(R.layout.activity_meal);
 
         Intent intent = getIntent();
-        //get the attached extras from the intent
-//we should use the same key as we used to attach the data.
         String id = intent.getStringExtra("cat_id");
         url = JSON_URL + id;
         // String x = " % %  ^ ^ ^ $ $ $ % % % ^ ^ ^  ^ ^  %B%% $ $ ## %#$$% $# %#$ %# " + url;
@@ -112,6 +112,10 @@ public class MealActivity extends AppCompatActivity {
 
                     meal.setImgurl(fullurl(mealObject.getString("main_photo").toString()));
                     meal.setLikes(Integer.parseInt(mealObject.getString("likes")));
+
+
+                    meal.setPhotos(Arrays.asList(mealObject.getString("photos").toString().replace("\"", "").replace("\\", "").replace("[","").replace("]","").split(",")));
+                    //System.out.println(mealObject.getString("photos").toString()+mealObject.getString("name")+mealObject.getString("photos"));
 
                     imgProgress = findViewById(R.id.imgProgress);
                     imgProgress.setVisibility(View.VISIBLE);

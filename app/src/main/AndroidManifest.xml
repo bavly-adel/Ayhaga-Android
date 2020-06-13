@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".FavouriteActivity"
+        <activity android:name=".ImageFullScreenActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+            android:name=".FavouriteActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".ReminderActivity"
@@ -54,8 +57,6 @@
         </activity>
 
         <receiver android:name=".NotificationDinner" />
-       <!-- <receiver android:name=".NotificationBreakfast" />
-        <receiver android:name=".NotificationLaunch" />-->
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

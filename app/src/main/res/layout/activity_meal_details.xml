@@ -52,7 +52,11 @@
                     android:id="@+id/photosList"
                     android:layout_width="match_parent"
                     android:layout_height="170dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layoutDirection="rtl"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="5dp">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
