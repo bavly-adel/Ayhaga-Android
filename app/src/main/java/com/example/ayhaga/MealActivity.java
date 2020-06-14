@@ -1,6 +1,8 @@
 package com.example.ayhaga;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +24,7 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.gson.Gson;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -29,7 +32,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -69,9 +75,6 @@ public class MealActivity extends AppCompatActivity {
         //mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
 
-
-
-
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -88,9 +91,6 @@ public class MealActivity extends AppCompatActivity {
         // String x = " % %  ^ ^ ^ $ $ $ % % % ^ ^ ^  ^ ^  %B%% $ $ ## %#$$% $# %#$ %# " + url;
 
         Toast.makeText(MealActivity.this, id + "", Toast.LENGTH_LONG).show();
-
-
-
 
 
         findViewById(R.id.elseBtn).setOnClickListener(new View.OnClickListener() {
@@ -113,7 +113,7 @@ public class MealActivity extends AppCompatActivity {
                 i.putExtra("meal", meal);
 
 
-                if(nextInterstitialAd.isLoaded()) {
+                if (nextInterstitialAd.isLoaded()) {
                     // Step 1: Display the interstitial
                     nextInterstitialAd.show();
                     // Step 2: Attach an AdListener
@@ -125,25 +125,24 @@ public class MealActivity extends AppCompatActivity {
                             Log.i("Ads", "onAdClosed");
                         }
                     });
-                }
-                else {
+                } else {
+
+                    // save meal logic
+                    saveMeal();
                     startActivity(i);
                 }
-
 
 
             }
         });
 
 
-
         nameTxt = (TextView) findViewById(R.id.mealName);
         //likesTxt = (TextView) findViewById(R.id.likesTxt);
         mealImg = (ImageView) findViewById(R.id.mealImg);
 
-
-
-        extractRandomMeal();
+        // logic retrieve saved meal
+        getSavedMeal(id);
     }
 
     private void extractRandomMeal() {
@@ -157,6 +156,7 @@ public class MealActivity extends AppCompatActivity {
 
 
                     JSONObject mealObject = response.getJSONObject(0);
+                    meal.setId(Integer.valueOf(mealObject.getString("id").toString()));
                     meal.setName(mealObject.getString("name").toString());
                     meal.setCategory_id(mealObject.getString("category_id").toString());
 
@@ -170,7 +170,7 @@ public class MealActivity extends AppCompatActivity {
                     meal.setLikes(Integer.parseInt(mealObject.getString("likes")));
 
 
-                    meal.setPhotos(Arrays.asList(mealObject.getString("photos").toString().replace("\"", "").replace("\\", "").replace("[","").replace("]","").split(",")));
+                    meal.setPhotos(Arrays.asList(mealObject.getString("photos").toString().replace("\"", "").replace("\\", "").replace("[", "").replace("]", "").split(",")));
                     //System.out.println(mealObject.getString("photos").toString()+mealObject.getString("name")+mealObject.getString("photos"));
 
                     imgProgress = findViewById(R.id.imgProgress);
@@ -187,8 +187,6 @@ public class MealActivity extends AppCompatActivity {
 
                         }
                     });
-
-
 
 
                 } catch (JSONException e) {
@@ -226,5 +224,129 @@ public class MealActivity extends AppCompatActivity {
 
         return newurl;
 
+    }
+
+    private void extractSpecificMeal(Integer mealId) {
+        String requestUrl = "https://dashboard.ayhaga.app/api/mealid/" + mealId;
+        RequestQueue queue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, requestUrl, null, new Response.Listener<JSONArray>() {
+
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    thisInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+
+                    JSONObject mealObject = response.getJSONObject(0);
+                    meal.setId(mealId);
+                    meal.setName(mealObject.getString("name").toString());
+                    meal.setCategory_id(mealObject.getString("category_id").toString());
+
+                    //meal.setDesc(mealObject.getString("description").toString());
+                    meal.setIngrediants(mealObject.getString("ingredients").toString());
+                    meal.setPreparation(mealObject.getString("preparation").toString());
+
+                    System.out.println(fullurl(mealObject.getString("main_photo")));
+
+                    meal.setImgurl(fullurl(mealObject.getString("main_photo").toString()));
+                    meal.setLikes(Integer.parseInt(mealObject.getString("likes")));
+
+
+                    meal.setPhotos(Arrays.asList(mealObject.getString("photos").toString().replace("\"", "").replace("\\", "").replace("[", "").replace("]", "").split(",")));
+                    //System.out.println(mealObject.getString("photos").toString()+mealObject.getString("name")+mealObject.getString("photos"));
+
+                    imgProgress = findViewById(R.id.imgProgress);
+                    imgProgress.setVisibility(View.VISIBLE);
+
+                    Picasso.get().load(fullurl(mealObject.getString("main_photo"))).into(mealImg, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            imgProgress.setVisibility(View.INVISIBLE);
+                        }
+
+                        @Override
+                        public void onError(Exception e) {
+
+                        }
+                    });
+
+
+                } catch (JSONException e) {
+                    System.out.println("Errooooooooooor ");
+                    e.printStackTrace();
+                }
+
+                nameTxt.setText(meal.getName());
+                //likesTxt.setText(" " + meal.getLikes());
+
+                //Picasso.get().load(fullurl(meal.getImgurl())).into(mealImg);
+
+                if (thisInterstitialAd.isLoaded()) {
+                    thisInterstitialAd.show();
+                } else {
+                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("tag", "onErrorResponse: " + error.getMessage());
+            }
+        });
+
+        queue.add(jsonArrayRequest);
+
+    }
+
+    public void saveMeal() {
+        Date today = Calendar.getInstance().getTime();
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        String formattedDate = df.format(today);
+        Log.d("saveMeal", "formattedDate: " + formattedDate);
+
+        SavedMeal savedMeal = new SavedMeal(meal.getId(), meal.getCategory_id(), meal.getName(), meal.getImgurl(), formattedDate);
+
+        // convert object to json
+        Gson gson = new Gson();
+        String savedMealJsonString = gson.toJson(savedMeal);
+        Log.d("saveMeal", "savedMealJsonString: " + savedMealJsonString);
+
+        // save to shared preference
+        saveToSharedPreference(meal.getCategory_id(), savedMealJsonString);
+    }
+
+
+    public void getSavedMeal(String categoryId) {
+        Gson gson = new Gson();
+        String data = getStringFromSharedPreference(categoryId);
+        Log.d("saveMeal", "getSavedMeal: "+data);
+        if (!data.equals("Not Exist")) {
+            SavedMeal savedMeal = gson.fromJson(data, SavedMeal.class);
+            Log.d("saveMeal", "getSavedMeal: "+savedMeal.id);
+
+            if (savedMeal.valid()) {
+                extractSpecificMeal(savedMeal.id);
+            } else
+                extractRandomMeal();
+
+        }
+        else
+            extractRandomMeal();
+    }
+
+    public void saveToSharedPreference(String key, String value) {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(key, value);
+        editor.apply();   // instead of commit
+        // Log.d("SP", pref.getString("auth_token", "NoToken") + "");
+    }
+
+
+    public String getStringFromSharedPreference(String key) {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        return pref.getString(key, "Not Exist");
     }
 }
