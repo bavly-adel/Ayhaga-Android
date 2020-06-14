@@ -1,8 +1,11 @@
 package com.example.ayhaga;
+
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import java.util.Date;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -26,8 +29,10 @@ public class NotificationBreakfast extends BroadcastReceiver {
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent);
 
+        int m = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
+
         NotificationManagerCompat notificationManagerCompat =  NotificationManagerCompat.from(context);
-        notificationManagerCompat.notify(200,builder.build());
+        notificationManagerCompat.notify(m,builder.build());
 
     }
 }
