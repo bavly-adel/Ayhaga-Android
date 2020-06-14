@@ -13,6 +13,7 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
@@ -44,16 +45,17 @@ public class MealDetailsActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_details);
 
 
-
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
+
             }
         });
 
@@ -126,7 +128,7 @@ public class MealDetailsActivity extends AppCompatActivity {
 
 
         }
-
+        //sleep();
 
         // add main photo and meal_photos to tje list
         photos = new ArrayList<String>();
@@ -149,9 +151,19 @@ public class MealDetailsActivity extends AppCompatActivity {
 
 
 
+
+
+
         photosList.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
         adapter = new MealPhotosRecyclerAdapter(getApplicationContext(),photos);
         photosList.setAdapter(adapter);
+        //sleep();
+
+//        if (mInterstitialAd.isLoaded()) {
+//            mInterstitialAd.show();
+//        } else {
+//            Log.d("TAG", "The interstitial wasn't loaded yet.");
+//        }
 
     }
 
@@ -161,6 +173,20 @@ public class MealDetailsActivity extends AppCompatActivity {
 
         return newurl;
 
+    }
+
+    public void sleep()
+    {
+       /* try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }*/
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
     }
 }
 

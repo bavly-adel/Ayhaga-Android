@@ -15,8 +15,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
@@ -50,10 +52,25 @@ public class MealActivity extends AppCompatActivity {
     ImageView mealImg;
     ProgressBar imgProgress;
 
+    private InterstitialAd thisInterstitialAd;
+    private InterstitialAd nextInterstitialAd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal);
+
+
+        thisInterstitialAd = new InterstitialAd(this);
+        thisInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+
+        nextInterstitialAd = new InterstitialAd(this);
+        nextInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        //mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+
+
+
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
@@ -89,14 +106,31 @@ public class MealActivity extends AppCompatActivity {
         findViewById(R.id.mealLinear).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // open right drawer
+                nextInterstitialAd.loadAd(new AdRequest.Builder().build());
 
                 Intent i = new Intent(MealActivity.this, MealDetailsActivity.class);
-                //i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                //int id = (int) name.getTag(Integer.parseInt("id"));
-                //int id = 2;
+
                 i.putExtra("meal", meal);
-                startActivity(i);
+
+
+                if(nextInterstitialAd.isLoaded()) {
+                    // Step 1: Display the interstitial
+                    nextInterstitialAd.show();
+                    // Step 2: Attach an AdListener
+                    nextInterstitialAd.setAdListener(new AdListener() {
+                        @Override
+                        public void onAdClosed() {
+                            startActivity(i);
+                            // Code to be executed when when the interstitial ad is closed.
+                            Log.i("Ads", "onAdClosed");
+                        }
+                    });
+                }
+                else {
+                    startActivity(i);
+                }
+
+
 
             }
         });
@@ -106,6 +140,8 @@ public class MealActivity extends AppCompatActivity {
         nameTxt = (TextView) findViewById(R.id.mealName);
         //likesTxt = (TextView) findViewById(R.id.likesTxt);
         mealImg = (ImageView) findViewById(R.id.mealImg);
+
+
 
         extractRandomMeal();
     }
@@ -117,6 +153,8 @@ public class MealActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 try {
+                    thisInterstitialAd.loadAd(new AdRequest.Builder().build());
+
 
                     JSONObject mealObject = response.getJSONObject(0);
                     meal.setName(mealObject.getString("name").toString());
@@ -162,6 +200,12 @@ public class MealActivity extends AppCompatActivity {
                 //likesTxt.setText(" " + meal.getLikes());
 
                 //Picasso.get().load(fullurl(meal.getImgurl())).into(mealImg);
+
+                if (thisInterstitialAd.isLoaded()) {
+                    thisInterstitialAd.show();
+                } else {
+                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                }
 
 
             }
