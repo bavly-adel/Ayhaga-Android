@@ -61,7 +61,11 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name=".NotificationBreakfast" />
+        <receiver android:name=".NotificationLaunch" />
         <receiver android:name=".NotificationDinner" />
+
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
