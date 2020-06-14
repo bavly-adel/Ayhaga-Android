@@ -19,6 +19,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/forget_pass" />
 
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
+
     <Button
 
         android:id="@+id/elseBtn"
@@ -41,18 +53,17 @@
         android:id="@+id/imageView4"
         android:layout_width="170dp"
         android:layout_height="170dp"
-        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adView"
         app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="2dp"
         android:fontFamily="@font/dinnextltarabic"
         android:text="اية رأيك تأكل دا انهاردة !؟"
         android:textColor="#FFFFFF"
@@ -69,80 +80,80 @@
         android:layout_width="340dp"
         android:layout_height="300dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
-        android:orientation="vertical"
         android:background="#fff"
+        android:layoutDirection="rtl"
+        android:orientation="vertical"
         app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        android:layoutDirection="rtl">
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
 
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
+        <!--        <androidx.cardview.widget.CardView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
 
-<!--            android:layoutDirection="rtl"-->
-<!--            >-->
+        <!--            android:layoutDirection="rtl"-->
+        <!--            >-->
 
-            <ImageView
-                android:id="@+id/mealImg"
-                android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:scaleType="centerCrop" />
+        <ImageView
+            android:id="@+id/mealImg"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:scaleType="centerCrop" />
 
-            <ProgressBar
+        <ProgressBar
 
-                android:id="@+id/imgProgress"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="95dp"
-                android:layout_marginRight="140dp" />
+            android:id="@+id/imgProgress"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="95dp"
+            android:layout_marginRight="140dp" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/mealName"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="220dp"
-                android:background="#fff"
-                android:fontFamily="@font/dinnextltarabic"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#3E3F68"
-                android:textSize="18sp" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/mealName"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="220dp"
+            android:background="#fff"
+            android:fontFamily="@font/dinnextltarabic"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="#3E3F68"
+            android:textSize="18sp" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/detailsBtn"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginTop="265dp"
-                android:layout_marginBottom="0dp"
-                android:background="#9CC640"
-                android:fontFamily="@font/dinnextltarabic"
-                android:text="شوف التفاصيل"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/detailsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="265dp"
+            android:layout_marginBottom="0dp"
+            android:background="#9CC640"
+            android:fontFamily="@font/dinnextltarabic"
+            android:text="شوف التفاصيل"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
 
-            <!--            <androidx.appcompat.widget.AppCompatTextView-->
+        <!--            <androidx.appcompat.widget.AppCompatTextView-->
 
-            <!--                android:id="@+id/likesTxt"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="30dp"-->
-            <!--                android:layout_marginTop="15dp"-->
-            <!--                android:layout_marginRight="15dp"-->
-            <!--                android:background="@drawable/linear_shape"-->
-            <!--                android:drawableLeft="@drawable/kda2"-->
-            <!--                android:padding="5dp"-->
-            <!--                android:text="1000"-->
-            <!--                android:textAlignment="center"-->
-            <!--                android:textColor="#222455"-->
-            <!--                android:textSize="17sp"-->
-            <!--                android:textStyle="bold">-->
+        <!--                android:id="@+id/likesTxt"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="30dp"-->
+        <!--                android:layout_marginTop="15dp"-->
+        <!--                android:layout_marginRight="15dp"-->
+        <!--                android:background="@drawable/linear_shape"-->
+        <!--                android:drawableLeft="@drawable/kda2"-->
+        <!--                android:padding="5dp"-->
+        <!--                android:text="1000"-->
+        <!--                android:textAlignment="center"-->
+        <!--                android:textColor="#222455"-->
+        <!--                android:textSize="17sp"-->
+        <!--                android:textStyle="bold">-->
 
-            <!--            </androidx.appcompat.widget.AppCompatTextView>-->
-<!--        </androidx.cardview.widget.CardView>-->
+        <!--            </androidx.appcompat.widget.AppCompatTextView>-->
+        <!--        </androidx.cardview.widget.CardView>-->
 
 
     </androidx.cardview.widget.CardView>
