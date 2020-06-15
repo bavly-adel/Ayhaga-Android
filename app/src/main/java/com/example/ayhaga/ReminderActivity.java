@@ -194,6 +194,8 @@ public class ReminderActivity extends AppCompatActivity {
                         saveToSP("breakfast_hour",breakfastHour);
                         saveToSP("breakfast_minute",breakfastMinute);
 
+                        setNotificationBreakfast(breakfastHour,breakfastMinute);
+
                         brekfastSwitch.setChecked(true);
                         saveToSP("breakfastActive",1);
 
@@ -223,6 +225,8 @@ public class ReminderActivity extends AppCompatActivity {
 
                         saveToSP("launch_hour",launchHour);
                         saveToSP("launch_minute",launchMinute);
+
+                        setNotificationLaunch(launchHour,launchMinute);
 
                         launchSwitch.setChecked(true);
                         saveToSP("launchActive",1);
@@ -255,6 +259,7 @@ public class ReminderActivity extends AppCompatActivity {
                         saveToSP("dinner_hour",dinnerHour);
                         saveToSP("dinner_minute",dinnerMinute);
 
+                        setNotificationDinner(dinnerHour,dinnerMinute);
 
                         dinnerSwitch.setChecked(true);
                         saveToSP("dinnerActive",1);

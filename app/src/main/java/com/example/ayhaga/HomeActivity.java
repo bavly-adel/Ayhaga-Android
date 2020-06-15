@@ -209,26 +209,22 @@ public class HomeActivity extends AppCompatActivity {
 
             saveToSP("breakfast_hour",8);
             saveToSP("breakfast_minute",0);
-            saveToSP("launch_hour",13);
-            saveToSP("launch_minute",0);
-            saveToSP("dinner_hour",21);
-            saveToSP("dinner_minute",0);
+            saveToSP("launch_hour",17);
+            saveToSP("launch_minute",35);
+            saveToSP("dinner_hour",17);
+            saveToSP("dinner_minute",37);
 
-            saveToSP("default_alarm",1);
+            saveToSP("default_alarm_bf",1);
+            saveToSP("default_alarm_lun",1);
+            saveToSP("default_alarm_din",1);
 
             createNotificationChannelBreakfast();
             createNotificationChannelDinner();
             createNotificationChannelLaunch();
 
-        }else {
-
-            saveToSP("default_alarm", 0);
         }
 
     }
-
-
-
 
     private void createNotificationChannelBreakfast(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -240,7 +236,6 @@ public class HomeActivity extends AppCompatActivity {
             channel.setDescription(description);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
-
 
         }
     }
@@ -271,10 +266,8 @@ public class HomeActivity extends AppCompatActivity {
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
 
-
         }
     }
-
 
     public void saveToSP(String key, int value) {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);

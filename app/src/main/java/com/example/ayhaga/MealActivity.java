@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -93,21 +92,25 @@ public class MealActivity extends AppCompatActivity {
         url = JSON_URL + id;
         // String x = " % %  ^ ^ ^ $ $ $ % % % ^ ^ ^  ^ ^  %B%% $ $ ## %#$$% $# %#$ %# " + url;
 
-        int defaultAlarm = getIntFromSP("default_alarm");
+        int defaultAlarmBF = getIntFromSP("default_alarm_bf");
+        int defaultAlarmLun = getIntFromSP("default_alarm_lun");
+        int defaultAlarmDin = getIntFromSP("default_alarm_din");
 
-        if (defaultAlarm == 1) {
-            if (id.equals("1")) {
+
+            if (id.equals("1") && defaultAlarmBF == 1) {
                 setNotificationBreakfast();
-            } else if (id.equals("2")) {
+                saveToSP("default_alarm_bf",0);
+            } else if (id.equals("2") && defaultAlarmLun == 1) {
                 setNotificationLaunch();
-            } else if (id.equals("3")) {
+                saveToSP("default_alarm_lun",0);
+            } else if (id.equals("3") && defaultAlarmDin == 1) {
                 setNotificationDinner();
+                saveToSP("default_alarm_din",0);
             }
 
-            saveToSP("default_alarm",0);
 
-        }
-        Toast.makeText(MealActivity.this, id + "", Toast.LENGTH_LONG).show();
+
+        //Toast.makeText(MealActivity.this, id + "", Toast.LENGTH_LONG).show();
 
 
         findViewById(R.id.elseBtn).setOnClickListener(new View.OnClickListener() {
