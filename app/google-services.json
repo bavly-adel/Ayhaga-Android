@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "137610278950",
+    "firebase_url": "https://mocv-8d3d4.firebaseio.com",
+    "project_id": "mocv-8d3d4",
+    "storage_bucket": "mocv-8d3d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137610278950:android:ac4d25bf139ea727a40ee7",
+        "android_client_info": {
+          "package_name": "com.ctg.ayhaga"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137610278950-o9fp8icl32t0c7t5jv8ahnqrps84bskq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA303VU9t27EmHe9Zp45He4W_9sqPX80DM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "137610278950-o9fp8icl32t0c7t5jv8ahnqrps84bskq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

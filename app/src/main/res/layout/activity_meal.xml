@@ -57,7 +57,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/adView"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo2" />
 
     <TextView
         android:id="@+id/textView5"
