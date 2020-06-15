@@ -15,7 +15,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="15dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -26,6 +31,7 @@
                 android:id="@+id/catImg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@android:color/darker_gray"
                 android:scaleType="centerCrop"
                 app:layout_constraintCircleRadius="10dp"
                 tools:layout_editor_absoluteX="13dp"
@@ -37,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:text="Song Title"
                 android:textAlignment="center"
-                android:textColor="#B3ACAC"
+                android:textColor="@android:color/white"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/catImg"

@@ -115,7 +115,6 @@ public class ReminderActivity extends AppCompatActivity {
         Button launchBtn = (Button) findViewById(R.id.launchBtn);
         Button dinnerBtn = (Button) findViewById(R.id.dinnerBtn);
 
-        //Button saveBtn = (Button) findViewById(R.id.saveBtn);
 
 
         setTimeToText(breakfastText,breakfastHour,breakfastMinute);
@@ -139,10 +138,7 @@ public class ReminderActivity extends AppCompatActivity {
 
                 } else {
                     saveToSP("breakfastActive",0);
-//                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//
-//                        deleteNotificationChannel(breakfastHour,breakfastMinute);
-//                    }
+                    cancelAlarmBreakfast(1);
 
                 }
             }
@@ -158,6 +154,8 @@ public class ReminderActivity extends AppCompatActivity {
 
                 } else {
                     saveToSP("launchActive",0);
+                    cancelAlarmLaunch(1);
+
                 }
             }
         });
@@ -172,6 +170,7 @@ public class ReminderActivity extends AppCompatActivity {
 
                 } else {
                     saveToSP("dinnerActive",0);
+                    cancelAlarmDinner(1);
                 }
             }
         });
@@ -194,6 +193,9 @@ public class ReminderActivity extends AppCompatActivity {
 
                         saveToSP("breakfast_hour",breakfastHour);
                         saveToSP("breakfast_minute",breakfastMinute);
+
+                        brekfastSwitch.setChecked(true);
+                        saveToSP("breakfastActive",1);
 
                     }
                 },hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
@@ -221,6 +223,9 @@ public class ReminderActivity extends AppCompatActivity {
 
                         saveToSP("launch_hour",launchHour);
                         saveToSP("launch_minute",launchMinute);
+
+                        launchSwitch.setChecked(true);
+                        saveToSP("launchActive",1);
 
                     }
                 },hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
@@ -250,8 +255,9 @@ public class ReminderActivity extends AppCompatActivity {
                         saveToSP("dinner_hour",dinnerHour);
                         saveToSP("dinner_minute",dinnerMinute);
 
-                        //setNotificationDinner(dinnerHour,minute);
 
+                        dinnerSwitch.setChecked(true);
+                        saveToSP("dinnerActive",1);
 
                     }
                 },hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
@@ -260,28 +266,6 @@ public class ReminderActivity extends AppCompatActivity {
             }
         });
 
-//        saveBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//
-//                saveToSP("breakfast_hour",breakfastHour);
-//                saveToSP("breakfast_minute",breakfastMinute);
-//                saveToSP("launch_hour",launchHour);
-//                saveToSP("launch_minute",launchMinute);
-//                saveToSP("dinner_hour",dinnerHour);
-//                saveToSP("dinner_minute",dinnerMinute);
-//
-//
-//
-//
-//
-//                finish();
-//
-//            }
-//
-//        });
 
     }
 
@@ -442,41 +426,47 @@ public class ReminderActivity extends AppCompatActivity {
         return pref.getInt(key, 0);
     }
 
-    public void deleteNotificationChannel(int hour,int minute) {
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.deleteNotificationChannel("notifyBreakfast");
+    private void cancelAlarmBreakfast(int requestCode) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(
+                Context.ALARM_SERVICE
+        );
+        Intent intent = new Intent(this, NotificationBreakfast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                getApplicationContext(),
+                requestCode,
+                intent,
+                0
+        );
+        alarmManager.cancel(pendingIntent);
+    }
 
+    private void cancelAlarmLaunch(int requestCode) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(
+                Context.ALARM_SERVICE
+        );
+        Intent intent = new Intent(this, NotificationLaunch.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                getApplicationContext(),
+                requestCode,
+                intent,
+                0
+        );
+        alarmManager.cancel(pendingIntent);
+    }
 
-            Intent intent = new Intent(ReminderActivity.this, NotificationBreakfast.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            //PendingIntent pendingIntent = PendingIntent.getBroadcast(ReminderActivity.this,0,intent,PendingIntent.FLAG_ONE_SHOT);
-
-            PendingIntent pendingIntent =
-                    PendingIntent.getBroadcast(ReminderActivity.this, 1, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-//            manager.deleteNotificationChannel("notifyBreakfast");
-//            manager.deleteNotificationChannel("notifyLaunch");
-
-            AlarmManager alarmManager = (AlarmManager) getSystemService((ALARM_SERVICE));
-
-            Calendar cur_cal = new GregorianCalendar();
-            cur_cal.setTimeInMillis(System.currentTimeMillis());//set the current time and date for this calendar
-
-            Calendar cal = new GregorianCalendar();
-            cal.add(Calendar.DAY_OF_YEAR, cur_cal.get(Calendar.DAY_OF_YEAR));
-            cal.set(Calendar.HOUR_OF_DAY, hour);
-            cal.set(Calendar.MINUTE, minute);
-            cal.set(Calendar.SECOND, cur_cal.get(Calendar.SECOND));
-            cal.set(Calendar.MILLISECOND, cur_cal.get(Calendar.MILLISECOND));
-            cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
-            cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
-
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60, pendingIntent);
-
-
-
-        }
+    private void cancelAlarmDinner(int requestCode) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(
+                Context.ALARM_SERVICE
+        );
+        Intent intent = new Intent(this, NotificationDinner.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                getApplicationContext(),
+                requestCode,
+                intent,
+                0
+        );
+        alarmManager.cancel(pendingIntent);
     }
 
 

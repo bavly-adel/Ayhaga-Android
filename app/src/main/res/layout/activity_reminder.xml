@@ -286,7 +286,7 @@
         </androidx.cardview.widget.CardView>
 
 <!--        <Button-->
-<!--            android:id="@+id/saveBtn"-->
+<!--            android:id="@+id/deleteBtn"-->
 <!--            android:layout_width="match_parent"-->
 
 <!--            android:layout_height="46dp"-->
@@ -295,7 +295,7 @@
 <!--            android:layout_marginRight="30dp"-->
 <!--            android:background="@drawable/button_shape"-->
 <!--            android:fontFamily="@font/dinfontfamily"-->
-<!--            android:text="حفظ"-->
+<!--            android:text="حذف"-->
 <!--            android:textSize="20sp"-->
 <!--            app:layout_constraintEnd_toEndOf="parent"-->
 <!--            app:layout_constraintHorizontal_bias="0.5"-->
