@@ -14,8 +14,8 @@ public class NotificationDinner extends BroadcastReceiver {
 //    public static String NOTIFICATION_ID = "notification-id" ;
 //    public static String NOTIFICATION = "notification" ;
 public void onReceive (Context context , Intent intent) {
-    Intent i = new Intent(context,MealActivity.class);
-    i.putExtra("cat_id","3");
+    Intent i = new Intent(context,DinnerActivity.class);
+
     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
     PendingIntent pendingIntent = PendingIntent.getActivity(context,0,i,PendingIntent.FLAG_ONE_SHOT);

@@ -20,8 +20,7 @@ public class NotificationLaunch extends BroadcastReceiver {
 
         //String id = intent.getStringExtra("catId");
 
-        Intent i = new Intent(context,MealActivity.class);
-        i.putExtra("cat_id","2");
+        Intent i = new Intent(context,LaunchActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(context,0,i,PendingIntent.FLAG_ONE_SHOT);
