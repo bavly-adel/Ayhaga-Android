@@ -209,10 +209,10 @@ public class HomeActivity extends AppCompatActivity {
 
             saveToSP("breakfast_hour",8);
             saveToSP("breakfast_minute",0);
-            saveToSP("launch_hour",17);
-            saveToSP("launch_minute",35);
-            saveToSP("dinner_hour",17);
-            saveToSP("dinner_minute",37);
+            saveToSP("launch_hour",13);
+            saveToSP("launch_minute",0);
+            saveToSP("dinner_hour",21);
+            saveToSP("dinner_minute",0);
 
             saveToSP("default_alarm_bf",1);
             saveToSP("default_alarm_lun",1);

@@ -115,13 +115,14 @@ public class MealDetailsActivity extends AppCompatActivity {
             detailsParentLinear.removeView(descLinear);
 
         }
-        if (meal.getPreparation() != null) {
+        if (meal.getPreparation() != null && !meal.getPreparation().equals("null")) {
             prepTxt.setText(Html.fromHtml(meal.getPreparation()));
         }else {
+
             detailsParentLinear.removeView(prepLinear);
 
         }
-        if (meal.getIngrediants() != null) {
+        if (meal.getIngrediants() != null && !meal.getIngrediants().equals("null")) {
             ingredTxt.setText(Html.fromHtml(meal.getIngrediants()));
         }else {
             detailsParentLinear.removeView(ingredLinear);
