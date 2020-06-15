@@ -208,17 +208,23 @@ public class HomeActivity extends AppCompatActivity {
             // the key does not exist
 
             saveToSP("breakfast_hour",8);
-            saveToSP("breakfast_minute",35);
-            saveToSP("launch_hour",12);
-            saveToSP("launch_minute",59);
+            saveToSP("breakfast_minute",0);
+            saveToSP("launch_hour",13);
+            saveToSP("launch_minute",0);
             saveToSP("dinner_hour",21);
             saveToSP("dinner_minute",0);
+
+            saveToSP("default_alarm",1);
 
             createNotificationChannelBreakfast();
             createNotificationChannelDinner();
             createNotificationChannelLaunch();
 
+        }else {
+
+            saveToSP("default_alarm", 0);
         }
+
     }
 
 

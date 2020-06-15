@@ -97,12 +97,11 @@
                 app:srcCompat="@drawable/reminder" />
 
 
-            <EditText
+            <TextView
                 android:id="@+id/breakfastText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginRight="50dp"
-                android:background="#FFFFFF"
                 android:ems="10"
                 android:fontFamily="@font/dinfontfamily"
                 android:hint="00:00 AM"
@@ -112,7 +111,8 @@
                 android:textAlignment="textEnd"
                 android:textColor="#707070"
                 android:textColorHint="#707070"
-                android:textDirection="ltr" />
+                android:textDirection="ltr"
+                android:textSize="22sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/breakfastBtn"
@@ -173,12 +173,11 @@
                 app:srcCompat="@drawable/reminder" />
 
 
-            <EditText
+            <TextView
                 android:id="@+id/launchText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginRight="50dp"
-                android:background="#FFFFFF"
                 android:ems="10"
                 android:fontFamily="@font/dinfontfamily"
                 android:hint="00:00 AM"
@@ -188,7 +187,8 @@
                 android:textAlignment="textEnd"
                 android:textColor="#707070"
                 android:textColorHint="#707070"
-                android:textDirection="ltr" />
+                android:textDirection="ltr"
+                android:textSize="22sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/launchBtn"
@@ -246,12 +246,11 @@
                 app:srcCompat="@drawable/reminder" />
 
 
-            <EditText
+            <TextView
                 android:id="@+id/dinnerText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginRight="50dp"
-                android:background="#FFFFFF"
                 android:ems="10"
                 android:fontFamily="@font/dinfontfamily"
                 android:hint="00:00 AM"
@@ -261,7 +260,8 @@
                 android:textAlignment="textEnd"
                 android:textColor="#707070"
                 android:textColorHint="#707070"
-                android:textDirection="ltr" />
+                android:textDirection="ltr"
+                android:textSize="22sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/dinnerBtn"

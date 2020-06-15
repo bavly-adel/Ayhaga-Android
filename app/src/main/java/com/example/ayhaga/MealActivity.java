@@ -93,14 +93,20 @@ public class MealActivity extends AppCompatActivity {
         url = JSON_URL + id;
         // String x = " % %  ^ ^ ^ $ $ $ % % % ^ ^ ^  ^ ^  %B%% $ $ ## %#$$% $# %#$ %# " + url;
 
-        if (id.equals("1")){
-            setNotificationBreakfast();
-        }else if(id.equals("2")){
-            setNotificationLaunch();
-        }else if(id.equals("3")){
-            setNotificationDinner();
-        }
+        int defaultAlarm = getIntFromSP("default_alarm");
 
+        if (defaultAlarm == 1) {
+            if (id.equals("1")) {
+                setNotificationBreakfast();
+            } else if (id.equals("2")) {
+                setNotificationLaunch();
+            } else if (id.equals("3")) {
+                setNotificationDinner();
+            }
+
+            saveToSP("default_alarm",0);
+
+        }
         Toast.makeText(MealActivity.this, id + "", Toast.LENGTH_LONG).show();
 
 
@@ -388,7 +394,7 @@ public class MealActivity extends AppCompatActivity {
         cal.set(Calendar.MILLISECOND, cur_cal.get(Calendar.MILLISECOND));
         cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
         cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60*60*24, pendingIntent);
     }
 
     private void setNotificationLaunch(){
@@ -421,7 +427,7 @@ public class MealActivity extends AppCompatActivity {
         cal.set(Calendar.MILLISECOND, cur_cal.get(Calendar.MILLISECOND));
         cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
         cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60*60*24, pendingIntent);
     }
 
     private void setNotificationDinner(){
@@ -451,7 +457,7 @@ public class MealActivity extends AppCompatActivity {
         cal.set(Calendar.MILLISECOND, cur_cal.get(Calendar.MILLISECOND));
         cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
         cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60*60*24, pendingIntent);
     }
 
     public int getIntFromSP(String key) {

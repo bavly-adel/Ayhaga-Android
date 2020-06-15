@@ -183,9 +183,9 @@ public class ReminderActivity extends AppCompatActivity {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-//                        breakfastHour = hourOfDay;
-//                        breakfastMinute = minute;
 
+
+                        cancelAlarmBreakfast(1);
                         setTimeToText(breakfastText,hourOfDay,minute);
 
                         breakfastHour = hourOfDay;
@@ -213,8 +213,8 @@ public class ReminderActivity extends AppCompatActivity {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-//                        breakfastHour = hourOfDay;
-//                        breakfastMinute = minute;
+
+                        cancelAlarmLaunch(1);
 
                         setTimeToText(launchText,hourOfDay,minute);
 
@@ -240,12 +240,12 @@ public class ReminderActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
+
                 TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-//                        breakfastHour = hourOfDay;
-//                        breakfastMinute = minute;
 
+                        cancelAlarmDinner(1);
                         setTimeToText(dinnerText,hourOfDay,minute);
 
 
@@ -308,7 +308,7 @@ public class ReminderActivity extends AppCompatActivity {
         cal.set(Calendar.MILLISECOND, cur_cal.get(Calendar.MILLISECOND));
         cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
         cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60*60*24, pendingIntent);
 
     }
 
@@ -336,7 +336,7 @@ public class ReminderActivity extends AppCompatActivity {
         cal.set(Calendar.MILLISECOND, cur_cal.get(Calendar.MILLISECOND));
         cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
         cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60*60*24, pendingIntent);
     }
 
     private void setNotificationDinner(int hour,int minute){
@@ -361,7 +361,7 @@ public class ReminderActivity extends AppCompatActivity {
         cal.set(Calendar.MILLISECOND, cur_cal.get(Calendar.MILLISECOND));
         cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
         cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60*60*24, pendingIntent);
     }
 
 
