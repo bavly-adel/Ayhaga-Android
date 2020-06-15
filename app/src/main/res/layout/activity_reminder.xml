@@ -29,6 +29,37 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 
+
+<!--        <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layoutDirection="rtl"-->
+<!--            android:paddingLeft="30dp">-->
+
+<!--            <androidx.appcompat.widget.AppCompatTextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginRight="30dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:fontFamily="@font/dinnextltarabic"-->
+<!--                android:text="تشغيل / اغلاق الاشعارات"-->
+<!--                android:textColor="#000" />-->
+
+<!--            <Switch-->
+<!--                android:id="@+id/notifySwitch"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:textColor="#A69F9F" />-->
+
+<!--        </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
@@ -86,10 +117,22 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/breakfastBtn"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="match_parent">
 
+
             </androidx.appcompat.widget.AppCompatButton>
+
+            <Switch
+                android:id="@+id/breakfastSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="12dp"
+                android:textColor="#F7B03C"/>
+
+
 
         </androidx.cardview.widget.CardView>
 
@@ -150,10 +193,20 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/launchBtn"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="match_parent">
 
             </androidx.appcompat.widget.AppCompatButton>
+
+            <Switch
+                android:id="@+id/launchSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="12dp"
+                android:textColor="#FFFFFF"
+                android:textColorLink="#F7B03C" />
 
         </androidx.cardview.widget.CardView>
         <androidx.appcompat.widget.AppCompatTextView
@@ -213,46 +266,42 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/dinnerBtn"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="match_parent">
+
+
 
             </androidx.appcompat.widget.AppCompatButton>
 
+            <Switch
+                android:id="@+id/dinnerSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="12dp"
+                android:textColorHighlight="#F7B03C"
+                android:textColorLink="#F7B03C" />
+
         </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/saveBtn"
-            android:layout_width="match_parent"
+<!--        <Button-->
+<!--            android:id="@+id/saveBtn"-->
+<!--            android:layout_width="match_parent"-->
 
-            android:layout_height="46dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/button_shape"
-            android:fontFamily="@font/dinfontfamily"
-            android:text="حفظ"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+<!--            android:layout_height="46dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginLeft="30dp"-->
+<!--            android:layout_marginRight="30dp"-->
+<!--            android:background="@drawable/button_shape"-->
+<!--            android:fontFamily="@font/dinfontfamily"-->
+<!--            android:text="حفظ"-->
+<!--            android:textSize="20sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/cardView2" />-->
 
-        <Button
-            android:id="@+id/save2Btn"
-            android:layout_width="match_parent"
-
-            android:layout_height="46dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/button_shape"
-            android:fontFamily="@font/dinfontfamily"
-            android:text="test2"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
 
 

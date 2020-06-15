@@ -1,6 +1,8 @@
 package com.example.ayhaga;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -36,6 +38,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -89,6 +92,14 @@ public class MealActivity extends AppCompatActivity {
         String id = intent.getStringExtra("cat_id");
         url = JSON_URL + id;
         // String x = " % %  ^ ^ ^ $ $ $ % % % ^ ^ ^  ^ ^  %B%% $ $ ## %#$$% $# %#$ %# " + url;
+
+        if (id.equals("1")){
+            setNotificationBreakfast();
+        }else if(id.equals("2")){
+            setNotificationLaunch();
+        }else if(id.equals("3")){
+            setNotificationDinner();
+        }
 
         Toast.makeText(MealActivity.this, id + "", Toast.LENGTH_LONG).show();
 
@@ -349,4 +360,111 @@ public class MealActivity extends AppCompatActivity {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         return pref.getString(key, "Not Exist");
     }
+
+    private void setNotificationBreakfast(){
+        //Toast.makeText(ReminderActivity.this,"reminder",Toast.LENGTH_SHORT).show();
+        int hour = getIntFromSP("breakfast_hour");
+        int minute = getIntFromSP("breakfast_minute");
+
+        saveToSP("breakfastActive",1);
+
+
+        Intent intent = new Intent(MealActivity.this, NotificationBreakfast.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        //PendingIntent pendingIntent = PendingIntent.getBroadcast(ReminderActivity.this,0,intent,PendingIntent.FLAG_ONE_SHOT);
+
+        PendingIntent pendingIntent =
+                PendingIntent.getBroadcast(MealActivity.this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService((ALARM_SERVICE));
+
+        Calendar cur_cal = new GregorianCalendar();
+        cur_cal.setTimeInMillis(System.currentTimeMillis());//set the current time and date for this calendar
+
+        Calendar cal = new GregorianCalendar();
+        cal.add(Calendar.DAY_OF_YEAR, cur_cal.get(Calendar.DAY_OF_YEAR));
+        cal.set(Calendar.HOUR_OF_DAY, hour);
+        cal.set(Calendar.MINUTE, minute);
+        cal.set(Calendar.SECOND, cur_cal.get(Calendar.SECOND));
+        cal.set(Calendar.MILLISECOND, cur_cal.get(Calendar.MILLISECOND));
+        cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
+        cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60, pendingIntent);
+    }
+
+    private void setNotificationLaunch(){
+        //Toast.makeText(ReminderActivity.this,"reminder",Toast.LENGTH_SHORT).show();
+
+        int hour = getIntFromSP("launch_hour");
+        int minute = getIntFromSP("launch_minute");
+
+        saveToSP("launchActive",1);
+
+
+        Intent intent = new Intent(MealActivity.this, NotificationLaunch.class);
+        //intent.putExtra("cat_id","2");
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        //PendingIntent pendingIntent = PendingIntent.getBroadcast(ReminderActivity.this,0,intent,PendingIntent.FLAG_ONE_SHOT);
+
+        PendingIntent pendingIntent =
+                PendingIntent.getBroadcast(MealActivity.this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService((ALARM_SERVICE));
+
+        Calendar cur_cal = new GregorianCalendar();
+        cur_cal.setTimeInMillis(System.currentTimeMillis());//set the current time and date for this calendar
+
+        Calendar cal = new GregorianCalendar();
+        cal.add(Calendar.DAY_OF_YEAR, cur_cal.get(Calendar.DAY_OF_YEAR));
+        cal.set(Calendar.HOUR_OF_DAY, hour);
+        cal.set(Calendar.MINUTE, minute);
+        cal.set(Calendar.SECOND, cur_cal.get(Calendar.SECOND));
+        cal.set(Calendar.MILLISECOND, cur_cal.get(Calendar.MILLISECOND));
+        cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
+        cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60, pendingIntent);
+    }
+
+    private void setNotificationDinner(){
+        //Toast.makeText(ReminderActivity.this,"reminder",Toast.LENGTH_SHORT).show();
+
+        int hour = getIntFromSP("dinner_hour");
+        int minute = getIntFromSP("dinner_minute");
+        saveToSP("dinnerActive",1);
+
+
+        Intent intent = new Intent(MealActivity.this, NotificationDinner.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        //PendingIntent pendingIntent = PendingIntent.getBroadcast(ReminderActivity.this,0,intent,PendingIntent.FLAG_ONE_SHOT);
+
+        PendingIntent pendingIntent =
+                PendingIntent.getBroadcast(MealActivity.this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService((ALARM_SERVICE));
+
+        Calendar cur_cal = new GregorianCalendar();
+        cur_cal.setTimeInMillis(System.currentTimeMillis());//set the current time and date for this calendar
+
+        Calendar cal = new GregorianCalendar();
+        cal.add(Calendar.DAY_OF_YEAR, cur_cal.get(Calendar.DAY_OF_YEAR));
+        cal.set(Calendar.HOUR_OF_DAY, hour);
+        cal.set(Calendar.MINUTE, minute);
+        cal.set(Calendar.SECOND, cur_cal.get(Calendar.SECOND));
+        cal.set(Calendar.MILLISECOND, cur_cal.get(Calendar.MILLISECOND));
+        cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
+        cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60, pendingIntent);
+    }
+
+    public int getIntFromSP(String key) {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        return pref.getInt(key, 0);
+    }
+
+    public void saveToSP(String key, int value) {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt(key, value);
+        editor.apply();   // instead of commit
+        // Log.d("SP", pref.getString("auth_token", "NoToken") + "");
+    }
+
 }

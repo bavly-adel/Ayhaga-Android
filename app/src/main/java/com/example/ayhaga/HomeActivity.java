@@ -1,6 +1,10 @@
 package com.example.ayhaga;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -50,6 +54,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        checkNullSP();
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
@@ -64,11 +69,9 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.categoryList);
 
         categories = new ArrayList<>();
-        addBasicCategories();
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        adapter = new RecyclerViewAdapter(getApplicationContext(),categories);
-        recyclerView.setAdapter(adapter);
-        //extractCategories();
+        extractCategories();
+        //addBasicCategories();
+
 
 //        findViewById(R.id.menuBtn).setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -158,7 +161,9 @@ public class HomeActivity extends AppCompatActivity {
                     }
                 }
 
-
+                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                adapter = new RecyclerViewAdapter(getApplicationContext(),categories);
+                recyclerView.setAdapter(adapter);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -192,6 +197,85 @@ public class HomeActivity extends AppCompatActivity {
         categories.add(dinner);
         categories.add(dessert);
         categories.add(fruits);
+    }
+
+    public void checkNullSP() {
+        SharedPreferences preferences = getSharedPreferences("MyPref", 0);
+        int breakfast = preferences.getInt("breakfast_hour", 1000);
+        int launch = preferences.getInt("launch_hour", 1000);
+        int dinner = preferences.getInt("dinner_hour", 1000);
+        if (breakfast == 1000 && launch == 1000 && dinner == 1000) {
+            // the key does not exist
+
+            saveToSP("breakfast_hour",8);
+            saveToSP("breakfast_minute",35);
+            saveToSP("launch_hour",12);
+            saveToSP("launch_minute",59);
+            saveToSP("dinner_hour",21);
+            saveToSP("dinner_minute",0);
+
+            createNotificationChannelBreakfast();
+            createNotificationChannelDinner();
+            createNotificationChannelLaunch();
+
+        }
+    }
+
+
+
+
+    private void createNotificationChannelBreakfast(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+
+            CharSequence name = "Breakfast";
+            String description = "Reminder Channel Breakfast";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel("notifyBreakfast",name,importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+
+        }
+    }
+
+    private void createNotificationChannelLaunch(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+
+            CharSequence name = "Launch";
+            String description = "Reminder Channel Launch";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel("notifyLaunch",name,importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+
+        }
+    }
+
+    private void createNotificationChannelDinner(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+
+            CharSequence name = "Dinner";
+            String description = "Reminder Channel Dinner";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel("notifyDinner",name,importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+
+        }
+    }
+
+
+    public void saveToSP(String key, int value) {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt(key, value);
+        editor.apply();   // instead of commit
+        // Log.d("SP", pref.getString("auth_token", "NoToken") + "");
     }
 
 }
