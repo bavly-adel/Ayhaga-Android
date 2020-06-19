@@ -70,10 +70,10 @@ public class MealActivity extends AppCompatActivity {
 
 
         thisInterstitialAd = new InterstitialAd(this);
-        thisInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        thisInterstitialAd.setAdUnitId("ca-app-pub-5405017448198481/9126989014");
 
         nextInterstitialAd = new InterstitialAd(this);
-        nextInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        nextInterstitialAd.setAdUnitId("ca-app-pub-5405017448198481/9126989014");
         //mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
 
