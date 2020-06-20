@@ -28,6 +28,20 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/bookAdView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="18sp"
+            app:adSize="BANNER"
+            app:adUnitId="@string/banner_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="center">
+
+        </com.google.android.gms.ads.AdView>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"

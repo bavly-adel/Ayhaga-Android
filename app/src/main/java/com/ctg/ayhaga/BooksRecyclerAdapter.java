@@ -52,6 +52,7 @@ public class BooksRecyclerAdapter extends RecyclerView.Adapter<BooksRecyclerAdap
         holder.name.setText(books.get(position).getName());
         holder.downloadBtn.setTag(holder.getdownloadLink(books.get(position).getFile_path()));
         holder.downloadImg.setImageResource(R.drawable.download_icon);
+        holder.spliterImg.setImageResource(R.color.spliter_color);
 
     }
 
@@ -65,6 +66,7 @@ public class BooksRecyclerAdapter extends RecyclerView.Adapter<BooksRecyclerAdap
         TextView name;
         Button downloadBtn;
         ImageView downloadImg;
+        ImageView spliterImg;
         private InterstitialAd mInterstitialAd;
         private List<String> linkArray = new ArrayList<>();
 
@@ -104,12 +106,14 @@ public class BooksRecyclerAdapter extends RecyclerView.Adapter<BooksRecyclerAdap
             DownloadManager downloadManager;
 
             mInterstitialAd = new InterstitialAd(context);
-            mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+            mInterstitialAd.setAdUnitId("ca-app-pub-5405017448198481/9126989014");
             mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
             downloadImg = itemView.findViewById(R.id.downloadImg);
+
             name = itemView.findViewById(R.id.bookNameTxt);
             downloadBtn = itemView.findViewById(R.id.downloadBtn);
+            spliterImg = itemView.findViewById(R.id.spliterImg);
 
             downloadBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
