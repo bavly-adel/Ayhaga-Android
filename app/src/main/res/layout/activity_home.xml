@@ -15,7 +15,8 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/homeParentLinear">
         <androidx.appcompat.widget.LinearLayoutCompat
 
             android:layout_width="match_parent"
@@ -40,6 +41,19 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent">
         </com.google.android.gms.ads.AdView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:id="@+id/linearBookBtn">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bookBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/banner_book" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
 
         <androidx.recyclerview.widget.RecyclerView

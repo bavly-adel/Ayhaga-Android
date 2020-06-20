@@ -11,41 +11,44 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="com.ctg.ayhaga.LaunchActivity"
+            android:name=".BooksActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
-            android:name="com.ctg.ayhaga.DinnerActivity"
+            android:name=".LaunchActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name="com.ctg.ayhaga.ImageFullScreenActivity"
+            android:name=".DinnerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name="com.ctg.ayhaga.FavouriteActivity"
+            android:name=".ImageFullScreenActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name="com.ctg.ayhaga.ReminderActivity"
+            android:name=".FavouriteActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name="com.ctg.ayhaga.MealDetailsActivity"
+            android:name=".ReminderActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name="com.ctg.ayhaga.MealActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name="com.ctg.ayhaga.ChangePassActivity" />
-        <activity
-            android:name="com.ctg.ayhaga.HomeActivity"
+            android:name=".MealDetailsActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name="com.ctg.ayhaga.SendLinkActivity"
+            android:name=".MealActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".ChangePassActivity" />
+        <activity
+            android:name=".HomeActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name="com.ctg.ayhaga.RegisterActivity"
+            android:name=".SendLinkActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name="com.ctg.ayhaga.ForgetPasswordActivity"
+            android:name=".RegisterActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name="com.ctg.ayhaga.SplashActivity"
+            android:name=".ForgetPasswordActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,7 +57,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ctg.ayhaga.MainActivity"
+            android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -67,10 +70,12 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-5405017448198481~8959753461" />
 
-        <receiver android:name="com.ctg.ayhaga.NotificationBreakfast" />
-        <receiver android:name="com.ctg.ayhaga.NotificationLaunch" />
-        <receiver android:name="com.ctg.ayhaga.NotificationDinner" />
+        <receiver android:name=".NotificationBreakfast" />
+        <receiver android:name=".NotificationLaunch" />
+        <receiver android:name=".NotificationDinner" />
+
     </application>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <uses-permission android:name="android.permission.INTERNET" />
 

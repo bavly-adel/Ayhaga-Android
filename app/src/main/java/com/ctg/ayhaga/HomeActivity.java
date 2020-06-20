@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,6 +43,9 @@ public class HomeActivity extends AppCompatActivity {
 //    private NavigationView nv;
 
 
+    LinearLayoutCompat linearBookBtn;
+    LinearLayoutCompat homeParentLinear;
+
 // TODO: Add adView to your view hierarchy.
 
     RecyclerView recyclerView;
@@ -53,6 +57,10 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        controlBooks();
+
+        homeParentLinear = findViewById(R.id.homeParentLinear);
+        linearBookBtn = findViewById(R.id.linearBookBtn);
 
         checkNullSP();
 
@@ -71,6 +79,7 @@ public class HomeActivity extends AppCompatActivity {
         categories = new ArrayList<>();
         extractCategories();
         //addBasicCategories();
+
 
 
 //        findViewById(R.id.menuBtn).setOnClickListener(new View.OnClickListener() {
@@ -112,7 +121,7 @@ public class HomeActivity extends AppCompatActivity {
 //        });
 
 
-                findViewById(R.id.reminderBtn).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.reminderBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, ReminderActivity.class);
@@ -120,7 +129,48 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.bookBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, BooksActivity.class);
+                startActivity(intent);
+            }
+        });
 
+
+    }
+
+    private void controlBooks(){
+
+        String bookUrl = "https://dashboard.ayhaga.app/api/books/permission";
+        RequestQueue queue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, bookUrl, null, new Response.Listener<JSONArray>() {
+
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+
+
+                    JSONObject bookSetting = response.getJSONObject(0);
+                    if (!bookSetting.getString("value").toString().equals("1")){
+                        homeParentLinear.removeView(linearBookBtn);
+                    }
+
+                } catch (JSONException e) {
+                    System.out.println("Errooooooooooor ");
+                    e.printStackTrace();
+                }
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("tag", "onErrorResponse: " + error.getMessage());
+            }
+        });
+
+        queue.add(jsonArrayRequest);
     }
 
     private void extractCategories() {
