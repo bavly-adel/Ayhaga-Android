@@ -16,7 +16,8 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/booksParentLayout">
         <androidx.appcompat.widget.LinearLayoutCompat
 
             android:layout_width="match_parent"
@@ -73,7 +74,7 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_margin="10dp">
+            android:layout_margin="5dp">
 
             <Button
                 android:id="@+id/searchBtn"
@@ -90,10 +91,28 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="10dp">
+            android:layout_height="40dp"
+            android:id="@+id/progressLayout">
+
+            <ProgressBar
+            android:id="@+id/bookProgress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/latestBooks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
 
             <androidx.appcompat.widget.AppCompatTextView
+
+                android:id="@+id/latestTxt"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/dinnextltarabic"
@@ -108,8 +127,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/booksList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp">
+            android:layout_height="match_parent">
 
         </androidx.recyclerview.widget.RecyclerView>
 
